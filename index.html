@@ -91,6 +91,10 @@ h1{
   font-size:clamp(29px,6.8vw,42px);
   line-height:1.3;font-weight:700;letter-spacing:-.01em;
 }
+@media(max-width:767px){
+  h1 .h1-a{display:block;font-size:8vw;line-height:1.3;white-space:nowrap}
+  h1 .h1-b{display:block;font-size:4.9vw;line-height:1.5;white-space:nowrap}
+}
 h2{
   font-family:'Discovery','Rubik',sans-serif;
   font-size:clamp(27px,5vw,36px);
@@ -530,7 +534,7 @@ footer{border-top:1px solid var(--line);padding:44px 24px 120px;text-align:cente
 <!-- hero -->
 <section class="hero" id="top">
   <div class="wrap">
-    <h1 class="rv">אתם כבר <span class="grad">מקצועיים מספיק.</span> הגיע הזמן <span class="grad">לתרגם את זה ללקוחות.</span></h1>
+    <h1 class="rv"><span class="h1-a">אתם כבר <span class="grad">מקצועיים מספיק.</span></span> <span class="h1-b">הגיע הזמן <span class="grad">לתרגם את זה ללקוחות.</span></span></h1>
     <p class="wholine rv">אם הגעתם לכאן, כנראה שהעסק שלכם מוכן לגדילה, אבל אתם מתקשים להפוך את הידע והניסיון שלכם לתוכן שמביא תוצאות. אתם לא לבד, וזה לא פשוט, אבל בדיוק בשביל זה נוצר "עסק עם פנים".</p>
 
     <ul class="checks">
