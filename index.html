@@ -92,8 +92,8 @@ h1{
   line-height:1.3;font-weight:700;letter-spacing:-.01em;
 }
 @media(max-width:767px){
-  h1 .h1-a{display:block;font-size:8vw;line-height:1.3;white-space:nowrap}
-  h1 .h1-b{display:block;font-size:4.9vw;line-height:1.5;white-space:nowrap}
+  h1 .h1-a{display:block;font-size:8.4vw;line-height:1.3;white-space:nowrap}
+  h1 .h1-b{display:block;font-size:6.85vw;line-height:1.45;white-space:nowrap}
 }
 h2{
   font-family:'Discovery','Rubik',sans-serif;
@@ -368,20 +368,20 @@ img.proof-pic{background:none}
 /* works grid */
 .works-wrap{display:flex;flex-direction:column;align-items:center;margin-top:26px}
 /* small poster carousel */
-.reel{overflow:hidden;position:relative;width:100%;
+.reel{overflow-x:auto;overflow-y:hidden;position:relative;width:100%;direction:ltr;
+  scrollbar-width:none;-ms-overflow-style:none;cursor:grab;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
   mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
-.reel-track{display:flex;gap:10px;width:max-content;animation:reelmove 70s linear infinite}
-.reel:hover .reel-track,.reel:focus-within .reel-track{animation-play-state:paused}
-@keyframes reelmove{from{transform:translateX(0)}to{transform:translateX(50%)}}
+.reel::-webkit-scrollbar{display:none}
+.reel.dragging{cursor:grabbing}
+.reel-track{display:flex;gap:10px;width:max-content}
 .reel-tile{flex:0 0 auto;width:128px;aspect-ratio:9/16;border-radius:12px;overflow:hidden;
   padding:0;border:1px solid var(--line);background:#0a110d;cursor:pointer}
 .reel-tile video{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;transition:transform .25s ease}
 .reel-tile:hover video{transform:scale(1.05)}
 @media(max-width:480px){.reel-tile{width:100px}}
-@media(prefers-reduced-motion:reduce){.reel-track{animation:none}.reel{overflow-x:auto;mask-image:none;-webkit-mask-image:none}}
-html.a11y-noanim .reel-track{animation:none !important}
-html.a11y-noanim .reel{overflow-x:auto;mask-image:none;-webkit-mask-image:none}
+@media(prefers-reduced-motion:reduce){.reel{mask-image:none;-webkit-mask-image:none}}
+html.a11y-noanim .reel{mask-image:none;-webkit-mask-image:none}
 
 
 .btn-arrow{
@@ -982,6 +982,77 @@ const reelIo = new IntersectionObserver((ents)=>{
   });
 },{threshold:.1});
 reelVids.forEach(v=>reelIo.observe(v));
+
+// carousel: slow auto-drift + natural swipe/drag
+const reelEl = document.querySelector('.reel');
+const reelTrack = document.querySelector('.reel-track');
+let reelPaused = false, reelResumeTimer = null, reelDrag = null, reelMoved = false;
+const reelHalf = () => reelTrack.scrollWidth / 2;
+function reelWrap(){
+  const h = reelHalf();
+  if(h <= 0) return;
+  if(reelEl.scrollLeft >= h) reelEl.scrollLeft -= h;
+  else if(reelEl.scrollLeft < 0) reelEl.scrollLeft += h;
+}
+function reelPause(ms){
+  reelPaused = true;
+  clearTimeout(reelResumeTimer);
+  reelResumeTimer = setTimeout(()=>{ reelPaused = false; }, ms);
+}
+(function reelStep(){
+  const noAnim = document.documentElement.classList.contains('a11y-noanim') ||
+    (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  if(!reelPaused && !noAnim){ reelEl.scrollLeft += 0.55; }
+  reelWrap();
+  requestAnimationFrame(reelStep);
+})();
+reelEl.addEventListener('touchstart', ()=>reelPause(2500), {passive:true});
+reelEl.addEventListener('touchmove', ()=>reelPause(2500), {passive:true});
+reelEl.addEventListener('wheel', ()=>reelPause(2000), {passive:true});
+reelEl.addEventListener('mouseenter', ()=>reelPause(600));
+reelEl.addEventListener('mousemove', ()=>reelPause(600));
+// mouse drag on desktop
+reelEl.addEventListener('mousedown', (e)=>{
+  reelDrag = { x: e.clientX, sl: reelEl.scrollLeft };
+  reelMoved = false;
+  reelEl.classList.add('dragging');
+  reelPause(2000);
+});
+window.addEventListener('mousemove', (e)=>{
+  if(!reelDrag) return;
+  const dx = e.clientX - reelDrag.x;
+  if(Math.abs(dx) > 5) reelMoved = true;
+  reelEl.scrollLeft = reelDrag.sl - dx;
+  reelPause(2000);
+});
+window.addEventListener('mouseup', ()=>{
+  if(reelDrag){ reelDrag = null; reelEl.classList.remove('dragging'); }
+  setTimeout(()=>{ reelMoved = false; }, 150);
+});
+// a drag should not open a video
+reelEl.addEventListener('click', (e)=>{
+  if(reelMoved){ e.stopPropagation(); e.preventDefault(); reelMoved = false; }
+}, true);
+
+// video lightbox
+function openVideo(src){
+  const m = document.getElementById('vidModal');
+  const v = document.getElementById('vidPlayer');
+  v.src = src; m.classList.add('open');
+  v.play().catch(()=>{});
+}
+function closeVideo(){
+  const m = document.getElementById('vidModal');
+  const v = document.getElementById('vidPlayer');
+  v.pause(); v.removeAttribute('src'); v.load();
+  m.classList.remove('open');
+}
+document.getElementById('vidModal').addEventListener('click', (e)=>{
+  if(e.target.id === 'vidModal') closeVideo();
+});
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'Escape' && document.getElementById('vidModal').classList.contains('open')) closeVideo();
+});
 
 // hamburger menu
 function toggleMenu(){
