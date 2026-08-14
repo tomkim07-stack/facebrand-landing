@@ -988,22 +988,28 @@ const reelEl = document.querySelector('.reel');
 const reelTrack = document.querySelector('.reel-track');
 let reelPaused = false, reelResumeTimer = null, reelDrag = null, reelMoved = false;
 const reelHalf = () => reelTrack.scrollWidth / 2;
-function reelWrap(){
-  const h = reelHalf();
-  if(h <= 0) return;
-  if(reelEl.scrollLeft >= h) reelEl.scrollLeft -= h;
-  else if(reelEl.scrollLeft < 0) reelEl.scrollLeft += h;
-}
+let reelPos = 0;
 function reelPause(ms){
   reelPaused = true;
   clearTimeout(reelResumeTimer);
-  reelResumeTimer = setTimeout(()=>{ reelPaused = false; }, ms);
+  reelResumeTimer = setTimeout(()=>{ reelPos = reelEl.scrollLeft; reelPaused = false; }, ms);
 }
 (function reelStep(){
   const noAnim = document.documentElement.classList.contains('a11y-noanim') ||
     (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
-  if(!reelPaused && !noAnim){ reelEl.scrollLeft += 0.55; }
-  reelWrap();
+  const h = reelHalf();
+  if(!reelPaused && !noAnim){
+    reelPos += 0.55;
+    if(h > 0 && reelPos >= h) reelPos -= h;
+    reelEl.scrollLeft = reelPos;
+  } else {
+    let sl = reelEl.scrollLeft;
+    if(h > 0){
+      if(sl >= h){ sl -= h; reelEl.scrollLeft = sl; }
+      else if(sl < 0){ sl += h; reelEl.scrollLeft = sl; }
+    }
+    reelPos = sl;
+  }
   requestAnimationFrame(reelStep);
 })();
 reelEl.addEventListener('touchstart', ()=>reelPause(2500), {passive:true});
