@@ -989,6 +989,7 @@ const reelTrack = document.querySelector('.reel-track');
 let reelPaused = false, reelResumeTimer = null, reelDrag = null, reelMoved = false;
 const reelHalf = () => reelTrack.scrollWidth / 2;
 let reelPos = 0;
+requestAnimationFrame(()=>{ const h0 = reelHalf(); if(h0>0){ reelPos = h0; reelEl.scrollLeft = h0; } });
 function reelPause(ms){
   reelPaused = true;
   clearTimeout(reelResumeTimer);
@@ -999,8 +1000,8 @@ function reelPause(ms){
     (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
   const h = reelHalf();
   if(!reelPaused && !noAnim){
-    reelPos += 0.55;
-    if(h > 0 && reelPos >= h) reelPos -= h;
+    reelPos -= 0.55;
+    if(h > 0 && reelPos < 0) reelPos += h;
     reelEl.scrollLeft = reelPos;
   } else {
     let sl = reelEl.scrollLeft;
