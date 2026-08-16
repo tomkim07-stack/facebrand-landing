@@ -459,6 +459,31 @@ html.a11y-noanim .tr-pen{display:none}
 .stages .stage{border-right-color:rgba(242,233,216,.14)}
 .stages .stage:before{display:none}
 
+
+/* mobile: plain line + looping ball (right->left) */
+.hline.loop .hl-svg{display:none}
+.hline.loop{position:relative;height:14px}
+.hline.loop:before{content:'';position:absolute;left:0;right:0;top:50%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(242,233,216,.22) 8%,rgba(242,233,216,.22) 92%,transparent)}
+.hline.loop:after{content:'';position:absolute;top:50%;right:0;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;
+  background:var(--gold);box-shadow:0 0 12px rgba(246,178,61,.9);animation:flow 3.2s linear infinite}
+html.a11y-noanim .hline.loop:after{animation:none;right:50%}
+
+
+/* mobile classic diagram: original static look with flowing dot */
+.system.classic .sys-overlay{display:none}
+.system.classic .node{border-color:rgba(246,178,61,.35)}
+.system.classic .n2{border-color:var(--gold);box-shadow:0 0 34px rgba(246,178,61,.16)}
+.system.classic .link{background:linear-gradient(90deg, rgba(246,178,61,.15), var(--gold), rgba(246,178,61,.15))}
+.system.classic .link:after{display:block;content:'';position:absolute;top:50%;right:0;width:7px;height:7px;border-radius:50%;
+  background:var(--gold);transform:translate(50%,-50%);animation:flow 2.6s linear infinite}
+
+
+/* mobile classic roadmap: static rail + dots */
+.stages.classic .tr-overlay{display:none}
+.stages.classic .stage{border-right-color:rgba(246,178,61,.4)}
+.stages.classic .stage:before{display:block}
+
 /* hamburger + menu */
 .menu-btn{
   width:44px;height:44px;border-radius:12px;border:1px solid var(--line);
@@ -1012,6 +1037,7 @@ footer{border-top:1px solid var(--line);padding:44px 24px 120px;text-align:cente
 </div>
 
 <script>
+const IS_MOBILE = window.matchMedia && matchMedia('(max-width: 767px)').matches;
 // reveal on scroll
 const io = new IntersectionObserver((entries)=>{
   entries.forEach((e,i)=>{
@@ -1129,6 +1155,7 @@ document.addEventListener('keydown', (e)=>{
 (function(){
   const sys = document.getElementById('sysDiagram');
   if(!sys) return;
+  if(IS_MOBILE){ sys.classList.add('classic'); return; }
   const reduce = (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) ||
     document.documentElement.classList.contains('a11y-noanim');
   const svg = sys.querySelector('.sys-overlay');
@@ -1254,11 +1281,12 @@ function makeTracer(wrapEl, itemSel, opts){
     setTimeout(()=>{ build(); run(); }, 750); } },{threshold:.25});
   io.observe(wrapEl);
 }
-makeTracer(document.getElementById('stagesWrap'), '.stage', {mode:'rail', speed:.32, hold:2200});
+if(!IS_MOBILE){ makeTracer(document.getElementById('stagesWrap'), '.stage', {mode:'rail', speed:.32, hold:2200}); } else { document.getElementById('stagesWrap').classList.add('classic'); }
 
-// headline underline: ball draws it right->left ONCE and it stays
+// headline underline: desktop = ball draws it once and it stays; mobile = ball loops on a plain line
 (function(){
   const box = document.querySelector('.hline'); if(!box) return;
+  if(IS_MOBILE){ box.classList.add('loop'); return; }
   const svg = box.querySelector('.hl-svg'), base = svg.querySelector('.hl-base'), trail = svg.querySelector('.hl-trail'), pen = svg.querySelector('.hl-pen');
   const reduce = (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) ||
     document.documentElement.classList.contains('a11y-noanim');
