@@ -241,7 +241,16 @@ html.a11y-noanim .hero:after,html.a11y-noanim .hero-dust span{animation:none !im
   100%{right:100%;opacity:0}
 }
 @media (prefers-reduced-motion: reduce){.link:after{animation:none;opacity:.8;right:50%}}
-.node.mid{border-color:var(--gold);box-shadow:0 0 34px rgba(246,178,61,.16)}
+/* one continuous path: ball enters each box from the link, circles it, exits where it entered, moves on */
+.system{position:relative}
+.node{position:relative;border-color:rgba(242,233,216,.16)}
+.link{background:rgba(242,233,216,.16)}
+.link:after{display:none}
+.sys-overlay{position:absolute;inset:-6px;width:calc(100% + 12px);height:calc(100% + 12px);pointer-events:none;overflow:visible}
+.sys-trail{fill:none;stroke:var(--gold);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+  filter:drop-shadow(0 0 6px rgba(246,178,61,.7))}
+.sys-pen{fill:var(--gold);filter:drop-shadow(0 0 8px rgba(246,178,61,1));opacity:0}
+html.a11y-noanim .sys-pen{display:none}
 
 /* goal */
 .goal{text-align:center}
@@ -430,18 +439,25 @@ html:not(.js) .btn-arrow{display:none}
 
 .wl-block{display:block}
 .wl-block+.wl-block{margin-top:.55em}
-/* ECG heartbeat line under headline */
-.ecg{margin:16px 0 6px;height:44px;width:min(520px,100%)}
-.ecg svg{width:100%;height:100%;overflow:visible}
-.ecg-base{fill:none;stroke:rgba(242,233,216,.14);stroke-width:1}
-.ecg-line{fill:none;stroke:url(#ecgFade);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
-  stroke-dasharray:180 1400;stroke-dashoffset:180;
-  filter:drop-shadow(0 0 6px rgba(246,178,61,.85));
-  animation:ecgrun 4.2s linear infinite}
-@keyframes ecgrun{to{stroke-dashoffset:-1400}}
-@media(max-width:480px){.ecg{height:38px;margin:14px 0 4px}}
-html.a11y-noanim .ecg-line{animation:none;stroke-dasharray:none;stroke-dashoffset:0;opacity:.7}
-@media(prefers-reduced-motion:reduce){.ecg-line{animation:none;stroke-dasharray:none;stroke-dashoffset:0;opacity:.7}}
+
+/* headline underline drawn once by the ball, stays gold */
+.hline{margin:16px 0 4px;width:100%;height:14px}
+.hl-svg{width:100%;height:100%;overflow:visible;display:block}
+.hl-base{stroke:rgba(242,233,216,.18);stroke-width:1}
+.hl-trail{stroke:var(--gold);stroke-width:2;stroke-linecap:round;filter:drop-shadow(0 0 6px rgba(246,178,61,.7))}
+.hl-pen{fill:var(--gold);filter:drop-shadow(0 0 8px rgba(246,178,61,1));opacity:0}
+@media(max-width:480px){.hline{margin:12px 0 2px}}
+html.a11y-noanim .hl-pen{display:none}
+
+
+/* shared ball tracer (roadmap) */
+.stages{position:relative;margin-right:8px}
+.tr-overlay{position:absolute;inset:-6px -14px -6px -6px;width:calc(100% + 20px);height:calc(100% + 12px);pointer-events:none;overflow:visible}
+.tr-trail{fill:none;stroke:var(--gold);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 6px rgba(246,178,61,.7))}
+.tr-pen{fill:var(--gold);filter:drop-shadow(0 0 8px rgba(246,178,61,1));opacity:0}
+html.a11y-noanim .tr-pen{display:none}
+.stages .stage{border-right-color:rgba(242,233,216,.14)}
+.stages .stage:before{display:none}
 
 /* hamburger + menu */
 .menu-btn{
@@ -576,21 +592,9 @@ footer{border-top:1px solid var(--line);padding:44px 24px 120px;text-align:cente
   <div class="hero-dust" aria-hidden="true"><span style="left:33.1%;animation-duration:18.1s;animation-delay:-10.5s;--dx:-34px;width:4px;height:4px"></span><span style="left:11.0%;animation-duration:24.2s;animation-delay:-2.7s;--dx:-23px;width:2px;height:2px"></span><span style="left:43.6%;animation-duration:17.0s;animation-delay:-27.3s;--dx:-6px;width:4px;height:4px"></span><span style="left:13.9%;animation-duration:19.1s;animation-delay:-11.2s;--dx:36px;width:4px;height:4px"></span><span style="left:58.2%;animation-duration:16.7s;animation-delay:-23.4s;--dx:5px;width:2px;height:2px"></span><span style="left:29.8%;animation-duration:18.0s;animation-delay:-26.5s;--dx:-15px;width:2px;height:2px"></span><span style="left:11.9%;animation-duration:24.0s;animation-delay:-24.4s;--dx:-32px;width:2px;height:2px"></span><span style="left:56.2%;animation-duration:24.7s;animation-delay:-15.1s;--dx:3px;width:3px;height:3px"></span><span style="left:46.7%;animation-duration:28.9s;animation-delay:-19.2s;--dx:-20px;width:2px;height:2px"></span><span style="left:69.1%;animation-duration:19.4s;animation-delay:-12.8s;--dx:2px;width:3px;height:3px"></span><span style="left:72.0%;animation-duration:20.0s;animation-delay:-0.6s;--dx:-31px;width:3px;height:3px"></span><span style="left:17.8%;animation-duration:20.8s;animation-delay:-2.0s;--dx:-6px;width:2px;height:2px"></span><span style="left:75.4%;animation-duration:24.0s;animation-delay:-3.7s;--dx:-15px;width:3px;height:3px"></span><span style="left:59.1%;animation-duration:24.1s;animation-delay:-16.3s;--dx:27px;width:3px;height:3px"></span><span style="left:47.5%;animation-duration:25.3s;animation-delay:-28.2s;--dx:16px;width:4px;height:4px"></span><span style="left:97.3%;animation-duration:27.5s;animation-delay:-21.5s;--dx:-9px;width:3px;height:3px"></span><span style="left:4.2%;animation-duration:22.5s;animation-delay:-25.0s;--dx:-31px;width:2px;height:2px"></span><span style="left:22.9%;animation-duration:20.0s;animation-delay:-7.8s;--dx:-8px;width:3px;height:3px"></span></div>
   <div class="wrap">
     <h1 class="rv"><span class="h1-a">אתם כבר <span class="grad">מקצועיים מספיק.</span></span> <span class="h1-b">הגיע הזמן <span class="grad">לתרגם את זה ללקוחות.</span></span></h1>
-    <div class="ecg rv" aria-hidden="true">
-      <svg viewBox="0 0 600 60" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="ecgFade" x1="0" x2="1">
-            <stop offset="0" stop-color="#f6b23d" stop-opacity="0"/>
-            <stop offset=".12" stop-color="#f6b23d" stop-opacity="1"/>
-            <stop offset=".88" stop-color="#f6b23d" stop-opacity="1"/>
-            <stop offset="1" stop-color="#f6b23d" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-        <path class="ecg-base" d="M0 30 H600"/>
-        <path class="ecg-line" d="M0 30 H80 L92 30 L100 12 L108 48 L116 30 H180 L188 30 L194 22 L200 30 H300 L312 30 L320 12 L328 48 L336 30 H400 L408 30 L414 22 L420 30 H520 L532 30 L540 12 L548 48 L556 30 H600"/>
-      </svg>
-    </div>
-    <p class="wholine rv"><span class="wl-block">אם הגעתם לכאן, אתם כנראה יודעים לעשות את העבודה מעולה מול לקוחות, והטלפון הראשון של החברים כשיש בעיה בתחום, אבל כשאתם באים לשווק את עצמכם, אתם לא יודעים איך לתרגם את הידע והניסיון שלכם לתוכן שמביא את הלקוחות שאתם מחפשים.</span><span class="wl-block">בדיוק בשביל זה נוצר "עסק עם פנים".</span></p>
+    <div class="hline rv" aria-hidden="true"><svg class="hl-svg" preserveAspectRatio="none"><line class="hl-base"/><line class="hl-trail"/><circle class="hl-pen" r="4.5"/></svg></div>
+    
+    <p class="wholine rv"><span class="wl-block">אם הגעתם לכאן, אתם כנראה יודעים לעשות את העבודה מעולה מול לקוחות, והטלפון הראשון של החברים כשיש להם בעיה בתחום, אבל כשאתם באים לשווק את עצמכם, אתם לא יודעים איך לתרגם את הידע והניסיון שלכם לתוכן שמביא את הלקוחות שאתם מחפשים.</span><span class="wl-block">בדיוק בשביל זה נוצר "עסק עם פנים".</span></p>
 
     <ul class="checks">
       <li class="rv"><span class="tick"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.5l3.5 3.5 7-8"/></svg></span><span><b>בלי לשבור את הראש</b> מול דף ריק</span></li>
@@ -700,12 +704,13 @@ footer{border-top:1px solid var(--line);padding:44px 24px 120px;text-align:cente
     <p class="rest rv">רוב יוצרי התוכן מלמדים שהתפקיד של תוכן הוא למכור. אבל זו פיקציה, שנועדה להבטיח להם עבודה.</p>
     <p class="rest rv">תוכן עובד כמו גשר. הוא מחבר בין קהל מסוים להצעה שרלוונטית אליו. כשההצעה מדויקת לקהל, והתוכן יודע לפגוש אותו ולהוביל אותו אליה, נוצרת מערכת תוכן מתפקדת.</p>
 
-    <div class="system rv">
-      <div class="node">קהל<small>האנשים הנכונים</small></div>
-      <div class="link"></div>
-      <div class="node mid">תוכן<small>מגשר בין הקהל להצעה</small></div>
-      <div class="link"></div>
-      <div class="node">הצעה<small>מה שבאמת מוכר</small></div>
+    <div class="system rv" id="sysDiagram">
+      <div class="node n1">קהל<small>האנשים הנכונים</small></div>
+      <div class="link l1"></div>
+      <div class="node n2">תוכן<small>מגשר בין הקהל להצעה</small></div>
+      <div class="link l2"></div>
+      <div class="node n3">הצעה<small>מה שבאמת מוכר</small></div>
+      <svg class="sys-overlay" aria-hidden="true"><path class="sys-trail t1"/><path class="sys-trail t2a"/><path class="sys-trail t2b"/><path class="sys-trail t3"/><circle class="sys-pen p1" r="4.5"/><circle class="sys-pen p2" r="4.5"/></svg>
     </div>
 
     <p class="rest rv" style="margin-bottom:4px"><strong>"עסק עם פנים"</strong></p>
@@ -729,6 +734,7 @@ footer{border-top:1px solid var(--line);padding:44px 24px 120px;text-align:cente
   <div class="wrap">
     <h2 class="rv">הנה בדיוק מה שאתם מקבלים</h2>
 
+    <div class="stages" id="stagesWrap">
     <div class="stage rv">
       <div class="num">שלב 1</div>
       <svg viewBox="0 0 48 48" class="stage-ic" fill="none" stroke="#f6b23d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 10h32v22H26l-9 8v-8H8z"/><path d="M24 15v8M24 27h.01" opacity=".9"/></svg>
@@ -748,6 +754,8 @@ footer{border-top:1px solid var(--line);padding:44px 24px 120px;text-align:cente
       <svg viewBox="0 0 48 48" class="stage-ic" fill="none" stroke="#f6b23d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="4" width="20" height="40" rx="4"/><path d="M22 32l8-6-8-6z"/><path d="M21 40h6" opacity=".7"/></svg>
       <h3>הסרטונים אצלכם</h3>
       <p>עד 5 ימים, וההודעה קופצת: הסרטונים מוכנים. ערוכים, מחכים רק להעלאה. ומהרגע הזה יש לכם מערכת שיווק שלמה שרצה: קהל שאתם מדברים אליו, מטרה שעומדת מאחורי כל סרטון, והצעה שבאמת יודעת למכור.</p>
+    </div>
+    <svg class="tr-overlay" aria-hidden="true"><path class="tr-trail"/><circle class="tr-pen" r="4.5"/></svg>
     </div>
   </div>
   <div class="wrap rv" style="margin-top:12px">
@@ -1116,6 +1124,173 @@ document.getElementById('vidModal').addEventListener('click', (e)=>{
 document.addEventListener('keydown', (e)=>{
   if(e.key === 'Escape' && document.getElementById('vidModal').classList.contains('open')) closeVideo();
 });
+
+// system diagram: ball circles קהל, rides link, SPLITS into two around תוכן (top/bottom), merges, rides link, circles הצעה
+(function(){
+  const sys = document.getElementById('sysDiagram');
+  if(!sys) return;
+  const reduce = (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) ||
+    document.documentElement.classList.contains('a11y-noanim');
+  const svg = sys.querySelector('.sys-overlay');
+  const T = {a: svg.querySelector('.t1'), b1: svg.querySelector('.t2a'), b2: svg.querySelector('.t2b'), c: svg.querySelector('.t3')};
+  const P1 = svg.querySelector('.p1'), P2 = svg.querySelector('.p2');
+  const nodes = ['.n1','.n2','.n3'].map(q=>sys.querySelector(q));
+  const R = 13;
+  const L = {};
+  function rectRel(el){ const s=svg.getBoundingClientRect(), r=el.getBoundingClientRect(); return {x:r.left-s.left, y:r.top-s.top, w:r.width, h:r.height}; }
+  function loopFrom(b, side){
+    const x=b.x,y=b.y,w=b.w,h=b.h,cy=y+h/2;
+    if(side==='left') return ` L ${x} ${cy} L ${x} ${y+R} A ${R} ${R} 0 0 1 ${x+R} ${y} L ${x+w-R} ${y} A ${R} ${R} 0 0 1 ${x+w} ${y+R} L ${x+w} ${y+h-R} A ${R} ${R} 0 0 1 ${x+w-R} ${y+h} L ${x+R} ${y+h} A ${R} ${R} 0 0 1 ${x} ${y+h-R} L ${x} ${cy}`;
+    return ` L ${x+w} ${cy} L ${x+w} ${y+R} A ${R} ${R} 0 0 0 ${x+w-R} ${y} L ${x+R} ${y} A ${R} ${R} 0 0 0 ${x} ${y+R} L ${x} ${y+h-R} A ${R} ${R} 0 0 0 ${x+R} ${y+h} L ${x+w-R} ${y+h} A ${R} ${R} 0 0 0 ${x+w} ${y+h-R} L ${x+w} ${cy}`;
+  }
+  function build(){
+    const s = svg.getBoundingClientRect();
+    svg.setAttribute('viewBox', `0 0 ${s.width} ${s.height}`);
+    const b = nodes.map(rectRel);
+    const cy = b[0].y + b[0].h/2;
+    // Segment A: circle קהל starting/ending at its left-middle, then ride link to תוכן's right-middle
+    let dA = `M ${b[0].x} ${cy}` + loopFrom(b[0],'left') + ` L ${b[1].x + b[1].w} ${cy}`;
+    // Segment B (split): from תוכן right-middle, top half to left-middle; and bottom half to left-middle
+    const x=b[1].x,y=b[1].y,w=b[1].w,h=b[1].h;
+    let dB1 = `M ${x+w} ${cy} L ${x+w} ${y+R} A ${R} ${R} 0 0 0 ${x+w-R} ${y} L ${x+R} ${y} A ${R} ${R} 0 0 0 ${x} ${y+R} L ${x} ${cy}`;
+    let dB2 = `M ${x+w} ${cy} L ${x+w} ${y+h-R} A ${R} ${R} 0 0 1 ${x+w-R} ${y+h} L ${x+R} ${y+h} A ${R} ${R} 0 0 1 ${x} ${y+h-R} L ${x} ${cy}`;
+    // Segment C: merged, ride link to הצעה right-middle and circle it
+    let dC = `M ${x} ${cy} L ${b[2].x + b[2].w} ${cy}` + loopFrom(b[2],'right');
+    T.a.setAttribute('d', dA); T.b1.setAttribute('d', dB1); T.b2.setAttribute('d', dB2); T.c.setAttribute('d', dC);
+    for(const k in T){ const len = T[k].getTotalLength(); L[k]=len; T[k].style.strokeDasharray = len; T[k].style.strokeDashoffset = reduce ? 0 : len; }
+  }
+  let done = false;
+  build(); window.addEventListener('resize', ()=>{ build(); if(done){ for(const k in T){ T[k].style.strokeDashoffset = 0; } } });
+  if(reduce){ P1.style.opacity=0; P2.style.opacity=0; return; }
+  const SPEED = 0.42; // px per ms
+  function animSeg(keys, pens){
+    return new Promise(res=>{
+      const len = L[keys[0]]; const dur = len / SPEED; const t0 = performance.now();
+      pens.forEach(p=>p.style.opacity=1);
+      const step=(t)=>{
+        const p = Math.min(1,(t-t0)/dur);
+        keys.forEach((k,i)=>{
+          T[k].style.strokeDashoffset = L[k]*(1-p);
+          const pt = T[k].getPointAtLength(L[k]*p);
+          pens[i].setAttribute('cx', pt.x); pens[i].setAttribute('cy', pt.y);
+        });
+        if(p<1) requestAnimationFrame(step); else res();
+      };
+      requestAnimationFrame(step);
+    });
+  }
+  async function run(){
+    await animSeg(['a'],[P1]);           // one ball
+    P2.style.opacity=1;                  // split
+    await animSeg(['b1','b2'],[P1,P2]);  // two balls around תוכן
+    P2.style.opacity=0;                  // merge
+    await animSeg(['c'],[P1]);           // one ball to הצעה
+    P1.style.opacity=0; done = true;     // done: everything stays gold
+  }
+  const io = new IntersectionObserver((ents)=>{ if(ents.some(e=>e.isIntersecting)){ io.disconnect();
+    setTimeout(()=>{ build(); run(); }, 750); } },{threshold:.3});
+  io.observe(sys);
+})();
+
+// generic ball tracer: builds a continuous path around a list of boxes (stacked vertically) and animates one ball along it
+function makeTracer(wrapEl, itemSel, opts){
+  if(!wrapEl) return;
+  const reduce = (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) ||
+    document.documentElement.classList.contains('a11y-noanim');
+  const svg = wrapEl.querySelector('.tr-overlay'), trail = svg.querySelector('.tr-trail'), pen = svg.querySelector('.tr-pen');
+  const items = [...wrapEl.querySelectorAll(itemSel)];
+  const R = opts.radius || 13, mode = opts.mode || 'boxes';
+  let total = 0, done = false;
+  const rel = (el)=>{ const s=svg.getBoundingClientRect(), r=el.getBoundingClientRect(); return {x:r.left-s.left,y:r.top-s.top,w:r.width,h:r.height}; };
+  function build(){
+    const s = svg.getBoundingClientRect();
+    svg.setAttribute('viewBox', `0 0 ${s.width} ${s.height}`);
+    const b = items.map(rel);
+    let d = '';
+    if(mode==='boxes'){
+      // start at top-center of first card; circle it (from top-center, go right? RTL page: start at right side). Path: enter at right-middle, loop, exit right-middle, drop down to next card right-middle.
+      b.forEach((c,i)=>{
+        const x=c.x,y=c.y,w=c.w,h=c.h,cy=y+h/2;
+        d += (i===0 ? `M ${x+w} ${cy}` : ` L ${x+w} ${cy}`);
+        d += ` L ${x+w} ${y+R} A ${R} ${R} 0 0 0 ${x+w-R} ${y} L ${x+R} ${y} A ${R} ${R} 0 0 0 ${x} ${y+R} L ${x} ${y+h-R} A ${R} ${R} 0 0 0 ${x+R} ${y+h} L ${x+w-R} ${y+h} A ${R} ${R} 0 0 0 ${x+w} ${y+h-R} L ${x+w} ${cy}`;
+        // travel down the right edge to bottom, then gap to next card
+        if(i < b.length-1){ d += ` L ${x+w} ${y+h-R}`; }
+      });
+    } else if(mode==='rail'){
+      // roadmap: single vertical rail on the right edge; ball travels down; at each stage's dot position, draws a small ring
+      const x = b[0].x + b[0].w; // right edge (border-right)
+      const top = b[0].y + 8, bottom = b[b.length-1].y + b[b.length-1].h;
+      d = `M ${x} ${top}`;
+      b.forEach((c,i)=>{
+        const dy = c.y + 14; // dot position (top:8 + radius)
+        d += ` L ${x} ${dy-7} A 7 7 0 1 1 ${x} ${dy+7} A 7 7 0 1 1 ${x} ${dy-7} L ${x} ${dy+7}`;
+        // then continue down: draw a subtle bracket along the stage? keep simple: continue rail
+      });
+      d += ` L ${x} ${bottom}`;
+    }
+    trail.setAttribute('d', d);
+    total = trail.getTotalLength();
+    trail.style.strokeDasharray = total;
+    trail.style.strokeDashoffset = reduce ? 0 : total;
+  }
+  window.addEventListener('resize', ()=>{ build(); if(done) trail.style.strokeDashoffset = 0; });
+  if(reduce){ build(); return; }
+  const SPEED = opts.speed || 0.42;
+  function run(){
+    const t0 = performance.now(); pen.style.opacity = 1;
+    const step=(t)=>{
+      const p = Math.min(1,(t-t0)/(total/SPEED));
+      trail.style.strokeDashoffset = total*(1-p);
+      const pt = trail.getPointAtLength(total*p);
+      pen.setAttribute('cx', pt.x); pen.setAttribute('cy', pt.y);
+      if(p<1) requestAnimationFrame(step);
+      else { pen.style.opacity=0; done = true; }
+    };
+    requestAnimationFrame(step);
+  }
+  const io = new IntersectionObserver((ents)=>{ if(ents.some(e=>e.isIntersecting)){ io.disconnect();
+    // reveal all items now so the ball never draws over hidden content, then measure after transitions settle
+    items.forEach(it=>it.classList.add('on'));
+    setTimeout(()=>{ build(); run(); }, 750); } },{threshold:.25});
+  io.observe(wrapEl);
+}
+makeTracer(document.getElementById('stagesWrap'), '.stage', {mode:'rail', speed:.32, hold:2200});
+
+// headline underline: ball draws it right->left ONCE and it stays
+(function(){
+  const box = document.querySelector('.hline'); if(!box) return;
+  const svg = box.querySelector('.hl-svg'), base = svg.querySelector('.hl-base'), trail = svg.querySelector('.hl-trail'), pen = svg.querySelector('.hl-pen');
+  const reduce = (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) ||
+    document.documentElement.classList.contains('a11y-noanim');
+  let W = 0, H = 0, len = 0;
+  function build(){
+    const r = svg.getBoundingClientRect(); W = r.width; H = r.height;
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    const y = H/2;
+    [base, trail].forEach(l=>{ l.setAttribute('x1', W); l.setAttribute('y1', y); l.setAttribute('x2', 0); l.setAttribute('y2', y); });
+    len = W;
+    trail.style.strokeDasharray = len;
+    trail.style.strokeDashoffset = reduce ? 0 : len;
+    pen.setAttribute('cy', y);
+  }
+  build(); window.addEventListener('resize', ()=>{ const done = trail.style.strokeDashoffset === '0'; build(); if(done) trail.style.strokeDashoffset = 0; });
+  if(reduce) return;
+  let started = false;
+  function run(){
+    if(started) return; started = true;
+    const t0 = performance.now(), DUR = 1900;
+    pen.style.opacity = 1;
+    const step = (t)=>{
+      const p = Math.min(1, (t - t0) / DUR);
+      const e = 1 - Math.pow(1 - p, 2); // ease-out
+      trail.style.strokeDashoffset = len * (1 - e);
+      pen.setAttribute('cx', W * (1 - e));
+      if(p < 1) requestAnimationFrame(step); else { pen.style.opacity = 0; }
+    };
+    requestAnimationFrame(step);
+  }
+  setTimeout(run, 700);
+})();
 
 // hamburger menu
 function toggleMenu(){
