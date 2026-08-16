@@ -426,6 +426,15 @@ html:not(.js) .btn-arrow{display:none}
   border:1px solid var(--line);background:rgba(12,20,16,.8);color:var(--cream);font-size:26px;line-height:1;cursor:pointer}
 .vid-close:hover{border-color:var(--gold)}
 
+
+/* headline reveal (typing) */
+h1.typing .h1-a, h1.typing .h1-b{visibility:hidden}
+h1.typing .h1-a.on, h1.typing .h1-b.on{visibility:visible}
+h1 .tch{opacity:0}
+h1 .tch.on{opacity:1}
+h1 .h1-a .tch, h1 .h1-b .tch{transition:opacity .08s linear}
+html.a11y-noanim h1 .tch{opacity:1 !important}
+
 /* hamburger + menu */
 .menu-btn{
   width:44px;height:44px;border-radius:12px;border:1px solid var(--line);
@@ -559,7 +568,7 @@ footer{border-top:1px solid var(--line);padding:44px 24px 120px;text-align:cente
   <div class="hero-dust" aria-hidden="true"><span style="left:33.1%;animation-duration:18.1s;animation-delay:-10.5s;--dx:-34px;width:4px;height:4px"></span><span style="left:11.0%;animation-duration:24.2s;animation-delay:-2.7s;--dx:-23px;width:2px;height:2px"></span><span style="left:43.6%;animation-duration:17.0s;animation-delay:-27.3s;--dx:-6px;width:4px;height:4px"></span><span style="left:13.9%;animation-duration:19.1s;animation-delay:-11.2s;--dx:36px;width:4px;height:4px"></span><span style="left:58.2%;animation-duration:16.7s;animation-delay:-23.4s;--dx:5px;width:2px;height:2px"></span><span style="left:29.8%;animation-duration:18.0s;animation-delay:-26.5s;--dx:-15px;width:2px;height:2px"></span><span style="left:11.9%;animation-duration:24.0s;animation-delay:-24.4s;--dx:-32px;width:2px;height:2px"></span><span style="left:56.2%;animation-duration:24.7s;animation-delay:-15.1s;--dx:3px;width:3px;height:3px"></span><span style="left:46.7%;animation-duration:28.9s;animation-delay:-19.2s;--dx:-20px;width:2px;height:2px"></span><span style="left:69.1%;animation-duration:19.4s;animation-delay:-12.8s;--dx:2px;width:3px;height:3px"></span><span style="left:72.0%;animation-duration:20.0s;animation-delay:-0.6s;--dx:-31px;width:3px;height:3px"></span><span style="left:17.8%;animation-duration:20.8s;animation-delay:-2.0s;--dx:-6px;width:2px;height:2px"></span><span style="left:75.4%;animation-duration:24.0s;animation-delay:-3.7s;--dx:-15px;width:3px;height:3px"></span><span style="left:59.1%;animation-duration:24.1s;animation-delay:-16.3s;--dx:27px;width:3px;height:3px"></span><span style="left:47.5%;animation-duration:25.3s;animation-delay:-28.2s;--dx:16px;width:4px;height:4px"></span><span style="left:97.3%;animation-duration:27.5s;animation-delay:-21.5s;--dx:-9px;width:3px;height:3px"></span><span style="left:4.2%;animation-duration:22.5s;animation-delay:-25.0s;--dx:-31px;width:2px;height:2px"></span><span style="left:22.9%;animation-duration:20.0s;animation-delay:-7.8s;--dx:-8px;width:3px;height:3px"></span></div>
   <div class="wrap">
     <h1 class="rv"><span class="h1-a">אתם כבר <span class="grad">מקצועיים מספיק.</span></span> <span class="h1-b">הגיע הזמן <span class="grad">לתרגם את זה ללקוחות.</span></span></h1>
-    <p class="wholine rv">אם הגעתם לכאן, אתם כנראה תקועים ב"מחסום המומחה".<br>אתם יודעים לעשות את העבודה מעולה מול לקוח, והטלפון הראשון של החברים כשיש בעיה בתחום, אבל כשאתם באים לשווק את עצמכם, אתם לא יודעים איך לתרגם את הידע והניסיון שלכם ללקוחות.<br>בדיוק בשביל זה נוצר "עסק עם פנים".</p>
+    <p class="wholine rv">אם הגעתם לכאן, אתם כנראה תקועים ב"מחסום המומחה".<br><br>אתם יודעים לעשות את העבודה מעולה מול לקוח, והטלפון הראשון של החברים כשיש בעיה בתחום, אבל כשאתם באים לשווק את עצמכם, אתם לא יודעים איך לתרגם את הידע והניסיון שלכם ללקוחות.<br><br>בדיוק בשביל זה נוצר "עסק עם פנים".</p>
 
     <ul class="checks">
       <li class="rv"><span class="tick"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.5l3.5 3.5 7-8"/></svg></span><span><b>בלי לשבור את הראש</b> מול דף ריק</span></li>
@@ -1084,6 +1093,43 @@ document.getElementById('vidModal').addEventListener('click', (e)=>{
 document.addEventListener('keydown', (e)=>{
   if(e.key === 'Escape' && document.getElementById('vidModal').classList.contains('open')) closeVideo();
 });
+
+// headline typing reveal
+(function(){
+  const h1 = document.querySelector('.hero h1');
+  if(!h1) return;
+  const reduce = (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) ||
+    document.documentElement.classList.contains('a11y-noanim');
+  if(reduce) return;
+  const lines = [h1.querySelector('.h1-a'), h1.querySelector('.h1-b')].filter(Boolean);
+  // wrap every text character in a span (keeps .grad spans intact)
+  const chars = [];
+  const wrap = (node) => {
+    if(node.nodeType === 3){
+      const frag = document.createDocumentFragment();
+      for(const ch of node.textContent){
+        const sp = document.createElement('span'); sp.className='tch'; sp.textContent = ch;
+        frag.appendChild(sp); chars.push(sp);
+      }
+      node.parentNode.replaceChild(frag, node);
+    } else if(node.nodeType === 1){
+      [...node.childNodes].forEach(wrap);
+    }
+  };
+  lines.forEach(l => wrap(l));
+  h1.classList.add('typing');
+  h1.classList.remove('rv'); h1.style.opacity = 1; h1.style.transform = 'none';
+  lines.forEach(l => l.classList.add('on'));
+  let i = 0;
+  const step = () => {
+    if(i >= chars.length) return;
+    chars[i].classList.add('on'); i++;
+    const ch = chars[i-1].textContent;
+    const delay = (ch === '.' ) ? 260 : (ch === ' ' ? 40 : 34);
+    setTimeout(step, delay);
+  };
+  setTimeout(step, 250);
+})();
 
 // hamburger menu
 function toggleMenu(){
