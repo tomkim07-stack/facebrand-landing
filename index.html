@@ -1400,12 +1400,12 @@ function submitLead(e){
     method:'POST',
     headers:{'Content-Type':'application/json','Accept':'application/json'},
     body: JSON.stringify(data)
-  }).then(r=>{
-    if(!r.ok) throw new Error();
+  }).then(r=>r.json()).then(j=>{
+    if(!j || String(j.success) !== 'true') throw new Error(j && j.message || 'fail');
     document.getElementById('leadForm').innerHTML = '<p style="color:var(--cream);font-size:19px;text-align:center;padding:10px 0">הפרטים התקבלו. אחזור אליכם בהקדם, תום.</p>';
   }).catch(()=>{
     btn.disabled = false;
-    btn.textContent = 'שלחו לי פרטים ונדבר';
+    btn.textContent = 'אני רוצה את הצעד הבא ←';
     msg.textContent = 'משהו השתבש בשליחה. נסו שוב, או כתבו לי ישירות באינסטגרם.';
     msg.style.color = 'var(--gold)';
   });
