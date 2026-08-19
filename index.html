@@ -484,6 +484,27 @@ html.a11y-noanim .hline.loop:after{animation:none;right:50%}
 .stages.classic .stage{border-right-color:rgba(246,178,61,.4)}
 .stages.classic .stage:before{display:block}
 
+
+/* story: collapsible continuation */
+.story-more{position:relative;padding-top:2px}
+.story-more[hidden]{display:none}
+.story-toggle{
+  display:inline-flex;align-items:center;gap:8px;margin-top:6px;padding:10px 0;
+  background:none;border:none;color:var(--gold);font:inherit;font-size:16px;cursor:pointer;
+  border-bottom:1px solid rgba(246,178,61,.35);
+  transition:border-color .2s ease;
+}
+.story-toggle:hover{border-bottom-color:var(--gold)}
+.story-toggle svg{transition:transform .3s ease}
+.story-toggle.open svg{transform:rotate(180deg)}
+/* soft fade above the toggle hinting there's more */
+#story .wrap{position:relative}
+.story-fade{height:56px;margin-top:-56px;pointer-events:none;
+  background:linear-gradient(180deg, rgba(12,20,16,0), var(--bg) 85%)}
+.story-fade.off{display:none}
+html:not(.js) .story-more{display:block}
+html:not(.js) .story-toggle,html:not(.js) .story-fade{display:none}
+
 /* hamburger + menu */
 .menu-btn{
   width:44px;height:44px;border-radius:12px;border:1px solid var(--line);
@@ -846,11 +867,18 @@ footer{border-top:1px solid var(--line);padding:44px 24px 120px;text-align:cente
     <p class="rv">נעים להכיר, אני תום.</p>
     <p class="rv">לפני "עסק עם פנים" היו לי שני עסקים בעולם חיי הלילה: פוסטר, בר שכונתי בתל אביב, ומיזם שנקרא ארטנדר שמלמד ברמנים לבטא את הכישורים שלהם במלואם.</p>
     <p class="rv">ארטנדר התפוצץ ויראלית ונהפך לאחד החשבונות הגדולים בעולם בנישה שלו (היום עומד על 330 אלף עוקבים). החשבון האישי שלי גם התפוצץ (מעל 100 אלף עוקבים), וכמו רבים שראו מהצד, חשבתי שהנה החלום קורה. הוא לא קרה.</p>
-    <p class="rv">המחיר של עסקים בחיי הלילה היה גבוה מדי עבורי, עד שלבסוף קיבלתי החלטה לעזוב ולהתחיל מחדש בתחום אחר.</p>
-    <p class="rv">הדבר היחיד שהייתה לי זיקה אליו היה התוכן שיצרתי עבורי. שמתי לב שאני יכול להשקיע גם שלוש שעות בסרטון של 20 שניות, והחלטתי לפתוח עסק ליצירת תוכן.</p>
-    <p class="rv">התחלתי לעבוד עם עסקים, בתחומי השירות בעיקר. התוכן שיצרתי היה יפה ומקצועי, אבל אז שמתי לב למשהו שלא עזב אותי: היה הבדל משמעותי בתוצאות העסקיות של העסקים שעבדתי איתם. בחלקם התוכן עבד בצורה פנומנלית, ובאחרים לא.</p>
-    <p class="rv">זה היה הרגע שתסמונת המתחזה הכתה בי חזק מאוד. אז התחלתי לחקור ולחפש. זה לא היה מאמר כזה או אחר שפתח לי את העיניים, אלא הזמן. הזמן שבו הורדתי את הראש ועבדתי, יצרתי תוכן מסוגים שונים לעסקים שונים, ולאט לאט התחלתי לזהות דפוס שחוזר על עצמו.</p>
-    <p class="rv">מסביב לדפוס הזה בניתי את "עסק עם פנים", והיום אני עוזר לאנשי מקצוע באמת טובים להפוך את הידע והניסיון שלהם לתוכן שגם יוביל את העסק שלהם קדימה.</p>
+    <div class="story-fade" id="storyFade"></div>
+    <div class="story-more" id="storyMore" hidden>
+    <p>המחיר של עסקים בחיי הלילה היה גבוה מדי עבורי, עד שלבסוף קיבלתי החלטה לעזוב ולהתחיל מחדש בתחום אחר.</p>
+    <p>הדבר היחיד שהייתה לי זיקה אליו היה התוכן שיצרתי עבורי. שמתי לב שאני יכול להשקיע גם שלוש שעות בסרטון של 20 שניות, והחלטתי לפתוח עסק ליצירת תוכן.</p>
+    <p>התחלתי לעבוד עם עסקים, בתחומי השירות בעיקר. התוכן שיצרתי היה יפה ומקצועי, אבל אז שמתי לב למשהו שלא עזב אותי: היה הבדל משמעותי בתוצאות העסקיות של העסקים שעבדתי איתם. בחלקם התוכן עבד בצורה פנומנלית, ובאחרים לא.</p>
+    <p>זה היה הרגע שתסמונת המתחזה הכתה בי חזק מאוד. אז התחלתי לחקור ולחפש. זה לא היה מאמר כזה או אחר שפתח לי את העיניים, אלא הזמן. הזמן שבו הורדתי את הראש ועבדתי, יצרתי תוכן מסוגים שונים לעסקים שונים, ולאט לאט התחלתי לזהות דפוס שחוזר על עצמו.</p>
+    <p>מסביב לדפוס הזה בניתי את "עסק עם פנים", והיום אני עוזר לאנשי מקצוע באמת טובים להפוך את הידע והניסיון שלהם לתוכן שגם יוביל את העסק שלהם קדימה.</p>
+    </div>
+    <button type="button" class="story-toggle rv" id="storyBtn" onclick="toggleStory()" aria-expanded="false" aria-controls="storyMore">
+      <span class="st-label">להמשך הסיפור</span>
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
   </div>
 </section>
 
@@ -1326,6 +1354,20 @@ if(!IS_MOBILE){ makeTracer(document.getElementById('stagesWrap'), '.stage', {mod
   }
   setTimeout(run, 700);
 })();
+
+// story expander
+function toggleStory(){
+  const m = document.getElementById('storyMore');
+  const b = document.getElementById('storyBtn');
+  const f = document.getElementById('storyFade');
+  const open = m.hidden;
+  m.hidden = !open;
+  b.classList.toggle('open', open);
+  b.setAttribute('aria-expanded', String(open));
+  b.querySelector('.st-label').textContent = open ? 'לקצר' : 'להמשך הסיפור';
+  if(f) f.classList.toggle('off', open);
+  if(!open){ document.getElementById('story').scrollIntoView({behavior:'smooth', block:'start'}); }
+}
 
 // hamburger menu
 function toggleMenu(){
