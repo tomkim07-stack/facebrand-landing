@@ -47,7 +47,8 @@ h1 .grad{color:var(--gold)}
 .sub-close{margin-top:22px;color:var(--cream);opacity:1}
 .hl{color:var(--gold)}
 .nb{white-space:nowrap}
-.step{padding:58px 0 10px;margin-top:34px;border-top:1px solid var(--line)}
+.step{padding:58px 0 10px;margin-top:34px;border-top:1px solid rgba(246,178,61,.35)}
+section[id="2"].step{border-top:0}
 .step-tag{
   display:block;
   color:var(--gold);font-weight:800;font-size:15px;letter-spacing:2px;
@@ -61,7 +62,7 @@ h1 .grad{color:var(--gold)}
 }
 .vid-frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000}
 .vid-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.cta{padding:64px 0 80px;margin-top:34px;border-top:1px solid var(--line);text-align:center}
+.cta{padding:96px 0 80px;margin-top:34px;border-top:1px solid rgba(246,178,61,.35);text-align:center}
 .cta h3{font-size:clamp(21px,4.4vw,27px);font-weight:800;margin-bottom:8px}
 .cta p{color:var(--muted);font-size:17px;margin-bottom:22px}
 .btn{
@@ -79,7 +80,9 @@ h1 .grad{color:var(--gold)}
 .btn-row .btn{flex:1;margin:0;padding:19px 10px;font-size:18px}
 .btn.ghost{background:transparent;color:var(--cream);border:1px solid var(--line);box-shadow:none}
 .btn.ghost:hover{border-color:rgba(246,178,61,.5);box-shadow:0 8px 26px rgba(246,178,61,.1)}
+.yt-slot,.yt-slot iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .vid-cover{
+  z-index:2;
   position:absolute;inset:0;width:100%;height:100%;
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
   background:
@@ -123,7 +126,7 @@ footer{padding:26px 0 34px;text-align:center;color:var(--muted);font-size:14px}
 <section class="hero">
   <div class="wrap">
     <h1>בשביל שעץ יוציא פרי, <span class="grad">הוא חייב שורשים.</span></h1>
-    <p class="sub">שף יכול לבשל לפי מתכון, לשדרג אותו, או להמציא מנה משלו. לא כי הוא אסף הכי הרבה מתכונים, <span class="hl">אלא כי הוא מבין טעם.</span></p>
+    <p class="sub">שף לדוגמא יכול להמציא מנה משלו, לא כי הוא אסף הכי הרבה מתכונים, <span class="hl nb">אלא כי הוא מבין טעם.</span></p>
     <p class="sub">אצל מוזיקאי זה אותו סיפור: <span class="hl nb">מי שמבין איך מוזיקה בנויה</span> יכול לנגן כל שיר, וגם לכתוב אחד משלו.</p>
     <p class="sub sub-close">הסרטונים פה לא בשביל לתת כלים, אלא בשביל לבנות ליבה לעסקים עם פנים. תהנו.</p>
   </div>
@@ -135,7 +138,8 @@ footer{padding:26px 0 34px;text-align:center;color:var(--muted);font-size:14px}
     <h2>איך תוכן באמת עובד (ואיך יוצרים אותו כמו מומחה)</h2>
     <div class="vid-card">
       <div class="vid-frame" data-vid="JZbzhqkpatc">
-        <button class="vid-cover" onclick="playVid(this)" aria-label="הפעלת חלק 1">
+        <div class="yt-slot" id="yt1"></div>
+        <button class="vid-cover" onclick="playVid(this,'yt1')" aria-label="הפעלת חלק 1">
           <span class="play-ring"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
           <span class="vid-cover-txt">לצפייה בחלק 1</span>
         </button>
@@ -150,7 +154,8 @@ footer{padding:26px 0 34px;text-align:center;color:var(--muted);font-size:14px}
     <h2>המנגנון שהופך תוכן ללקוחות</h2>
     <div class="vid-card">
       <div class="vid-frame" data-vid="08rbGtxkN3Y">
-        <button class="vid-cover" onclick="playVid(this)" aria-label="הפעלת חלק 2">
+        <div class="yt-slot" id="yt2"></div>
+        <button class="vid-cover" onclick="playVid(this,'yt2')" aria-label="הפעלת חלק 2">
           <span class="play-ring"><svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
           <span class="vid-cover-txt">לצפייה בחלק 2</span>
         </button>
@@ -172,14 +177,40 @@ footer{padding:26px 0 34px;text-align:center;color:var(--muted);font-size:14px}
 <footer>עסק עם פנים</footer>
 
 <script>
-function playVid(btn){
-  var frame=btn.parentElement, id=frame.getAttribute('data-vid');
-  var ifr=document.createElement('iframe');
-  ifr.src='https://www.youtube-nocookie.com/embed/'+id+'?rel=0&modestbranding=1&autoplay=1';
-  ifr.title='וידאו'; ifr.allowFullscreen=true;
-  ifr.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
-  ifr.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:0';
-  frame.replaceChild(ifr,btn);
+var ytPlayers={}, ytReady=false;
+(function(){
+  var t=document.createElement('script');
+  t.src='https://www.youtube.com/iframe_api';
+  document.head.appendChild(t);
+})();
+function onYouTubeIframeAPIReady(){
+  document.querySelectorAll('.vid-frame').forEach(function(frame){
+    var slot=frame.querySelector('.yt-slot'), vid=frame.getAttribute('data-vid');
+    if(!slot) return;
+    ytPlayers[slot.id]=new YT.Player(slot.id,{
+      host:'https://www.youtube-nocookie.com',
+      videoId:vid,
+      playerVars:{rel:0, playsinline:1, modestbranding:1},
+      events:{onReady:function(){ytReady=true;}}
+    });
+  });
+}
+function playVid(btn,key){
+  var p=ytPlayers[key];
+  if(p && p.playVideo){
+    btn.style.display='none';
+    try{p.playVideo();}catch(e){}
+  }else{
+    // fallback: inject iframe with autoplay
+    var frame=btn.parentElement, id=frame.getAttribute('data-vid');
+    var ifr=document.createElement('iframe');
+    ifr.src='https://www.youtube-nocookie.com/embed/'+id+'?rel=0&modestbranding=1&autoplay=1&playsinline=1';
+    ifr.title='וידאו'; ifr.allowFullscreen=true;
+    ifr.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+    ifr.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:0;z-index:3';
+    frame.appendChild(ifr);
+    btn.style.display='none';
+  }
 }
 </script>
 </body>
