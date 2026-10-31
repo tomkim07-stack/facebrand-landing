@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>בדיקת מצב שיווקי | FaceBrand</title>
+<meta name="description" content="גלו תוך דקה אחת איפה השיווק שלכם תקוע: לפני התוכן, בתוכן או אחריו.">
+<meta property="og:title" content="בדיקת מצב שיווקי | FaceBrand">
+<meta property="og:description" content="גלו תוך דקה אחת איפה השיווק שלכם תקוע: לפני התוכן, בתוכן או אחריו.">
+<link rel="preload" href="/discovery-fs.woff2" as="font" type="font/woff2" crossorigin>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PNV549HF');</script>
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1680180393699926');fbq('track','PageView');</script>
+<style>
+*{box-sizing:border-box}
+body{margin:0}
+/* FaceBrand: deep petrol night, cream type, orange accent; one centered column, one question at a time */
+@font-face{font-family:"Discovery FS";src:url(/discovery-fs.woff2) format("woff2") ;font-weight:100 900;font-display:swap}
+:root{
+  --bg:#0F1F26; --surface:rgba(253,241,214,.045); --surface-2:rgba(253,241,214,.08);
+  --fg:#FDF1D6; --muted:rgba(253,241,214,.6); --faint:rgba(253,241,214,.38); --line:rgba(253,241,214,.12);
+  --accent:#F2A93B; --accent-soft:rgba(242,169,59,.12); --on-accent:#0F1F26; --danger:#F08A78;
+  --font:"Discovery FS",Heebo,Assistant,system-ui,sans-serif;
+  color-scheme:dark;
+}
+html{direction:rtl;background:var(--bg)}
+body{background-color:var(--bg);color:var(--fg);font-family:var(--font);font-size:18px;line-height:1.6;min-height:100vh;
+  background-image:radial-gradient(1200px 700px at 90% -10%,rgba(247,127,0,.14),transparent 55%),radial-gradient(1000px 600px at -10% 110%,rgba(247,226,181,.1),transparent 60%),radial-gradient(700px 400px at 50% 30%,rgba(14,90,90,.16),transparent 70%);background-attachment:fixed;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:580px;margin:0 auto;padding-block:20px 56px;display:flex;flex-direction:column;gap:28px}
+.top{position:sticky;top:env(safe-area-inset-top,0px);background:rgba(15,31,38,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding-block:14px;z-index:5;display:flex;flex-direction:column;gap:10px}
+.meta{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--muted)}
+.bar{height:6px;border-radius:99px;background:var(--line);overflow:hidden}
+.fill{height:100%;width:0;background:var(--accent);border-radius:99px;transition:width .35s ease}
+.back{background:none;border:0;color:var(--muted);font:inherit;font-size:14px;cursor:pointer;padding:4px 0}
+.back:hover{color:var(--fg)}
+.back:disabled{visibility:hidden}
+h1,h2{font-family:var(--font);font-weight:700;line-height:1.15;text-wrap:balance;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(34px,8vw,52px)} h2{font-size:clamp(24px,5.4vw,30px);line-height:1.25}
+.hl{color:var(--accent)}
+p{margin:0}
+.lead{color:var(--muted)}
+.eyebrow{display:flex;align-items:center;gap:12px;font-size:13px;letter-spacing:.12em;color:var(--accent);font-weight:700}
+.eyebrow::before,.eyebrow::after{content:"";height:1px;width:28px;background:var(--accent);opacity:.7}
+.center{text-align:center;align-items:center}
+.center .opts{align-self:stretch}
+.wrap.mid{min-height:100svh;justify-content:center;padding-block:32px;box-sizing:border-box;gap:36px}
+.wrap.mid .top{position:static;background:none;backdrop-filter:none;-webkit-backdrop-filter:none;padding-block:0}
+.opts{display:flex;flex-direction:column;gap:12px}
+.opt{all:unset;box-sizing:border-box;cursor:pointer;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:17px 20px;font-size:18px;line-height:1.45;color:var(--fg);transition:border-color .15s,background .15s,transform .15s}
+.opt:hover{border-color:rgba(242,169,59,.55);background:var(--surface-2)}
+.opt:focus-visible,.btn:focus-visible,.back:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.opt.on{border-color:var(--accent);background:var(--accent-soft)}
+.btn{all:unset;box-sizing:border-box;cursor:pointer;text-align:center;background:var(--accent);color:var(--on-accent);font-weight:700;border-radius:999px;padding:16px 28px;font-size:18px;transition:filter .15s}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:none;color:var(--muted);border:1px solid var(--line)}
+.btn.ghost:hover{color:var(--fg);border-color:var(--faint)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:12px}
+.tag{font-size:14px;letter-spacing:.04em;color:var(--accent);font-weight:700}
+.feel{display:flex;flex-direction:column;gap:14px;border-inline-start:2px solid var(--accent);padding-inline-start:18px;border-radius:0}
+.feel p{font-size:clamp(20px,4.6vw,23px);line-height:1.5}
+.meter{display:flex;flex-direction:column;gap:10px;margin-block:4px}
+.mrow{display:grid;grid-template-columns:6.5em 1fr 3em;align-items:center;gap:10px;font-size:16px;color:var(--muted)}
+.mrow b{font-variant-numeric:tabular-nums;text-align:left;font-weight:400}
+.track{height:10px;background:var(--line);border-radius:99px;overflow:hidden}
+.mfill{height:100%;background:var(--faint);border-radius:99px}
+.mrow.hit{color:var(--fg)}
+.mrow.hit b{font-weight:700}
+.mrow.hit .mfill{background:var(--accent)}
+.sub{font-size:clamp(20px,4.6vw,23px);color:var(--muted);line-height:1.45}
+.ready{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.ready b{font-weight:700;font-size:clamp(48px,11vw,64px);line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+.ready span{font-size:17px;flex:1;min-width:12em;color:var(--fg)}
+.sub.hl{color:var(--accent)}
+.steps{display:flex;flex-direction:column;gap:0;position:relative}
+.step{display:flex;gap:14px;padding-block:14px;position:relative}
+.step:not(:last-child)::after{content:"";position:absolute;inset-inline-start:15px;top:48px;bottom:-14px;width:1px;background:var(--line)}
+.dot{flex:none;width:31px;height:31px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:14px;color:var(--muted);background:var(--bg);position:relative;z-index:1}
+.sbody{display:flex;flex-direction:column;gap:6px;min-width:0}
+.shead{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.shead b{font-size:19px}
+.sbody p{font-size:17px;line-height:1.5}
+.check{color:var(--muted)}
+.layers{display:flex;flex-direction:column;gap:14px}
+.lyr{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:20px;display:flex;flex-direction:column;gap:14px}
+.lyr.hit{border-color:rgba(242,169,59,.55);background:linear-gradient(180deg,rgba(242,169,59,.08),rgba(242,169,59,.02))}
+.lhead{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.lhead b{font-size:21px}
+.lnum{width:30px;height:30px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:14px;color:var(--muted);flex:none}
+.lyr.hit .lnum{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:700}
+.lyr.hit .lhead b{color:var(--accent)}
+.lyr .pill{margin-inline-start:auto}
+.lyr.some .pill,.lyr.quiet .pill{background:rgba(253,241,214,.06);color:var(--muted);border-color:var(--line)}
+.lblock{display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--line);padding-top:12px}
+.said{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.said li{font-size:17px;line-height:1.45}
+.quote{font-size:clamp(20px,4.6vw,23px);line-height:1.45}
+.flow{display:flex;align-items:stretch;gap:0}
+.node{flex:1;min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px 16px;display:flex;flex-direction:column;gap:8px}
+.node b{font-size:19px}
+.node p{font-size:15px;line-height:1.5;color:var(--muted)}
+.node.hit{border-color:var(--accent);background:var(--accent-soft)}
+.node.hit b{color:var(--accent)}
+.arrow{flex:none;width:26px;display:grid;place-items:center}
+.arrow::before{content:"";width:9px;height:9px;border-top:1.5px solid var(--faint);border-left:1.5px solid var(--faint);transform:rotate(-45deg)}
+@media (max-width:620px){.flow{flex-direction:column}.arrow{width:auto;height:26px}.arrow::before{transform:rotate(-135deg)}}
+.rec{display:flex;flex-direction:column;gap:6px;background:rgba(253,241,214,.05);border-radius:16px;padding:16px 18px}
+.rec .tag:not(:first-child){margin-top:10px}
+.qs{margin:0;padding-inline-start:22px;display:flex;flex-direction:column;gap:8px}
+.qs li::marker{color:var(--accent);font-weight:700}
+.book{display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;padding-block:28px 8px;border-top:1px solid var(--line)}
+.book .free{align-self:center}
+.gets-wrap{display:flex;flex-direction:column;gap:10px;align-items:center}
+.book .gets{align-items:flex-start;text-align:start}
+.mantra{font-size:clamp(22px,5vw,27px);font-weight:700;line-height:1.3}
+.formbox{width:100%;max-width:380px;display:flex;flex-direction:column;gap:12px}
+.formbox form{text-align:start}
+.disclaimer{font-size:14px;color:var(--faint);line-height:1.55}
+.pill{background:var(--accent-soft);color:var(--accent);border:1px solid rgba(242,169,59,.4);border-radius:999px;padding:2px 12px;font-size:13px;font-weight:700}
+.step.hit .dot{border-color:var(--accent);background:var(--accent);color:var(--on-accent);font-weight:700}
+.step.hit .shead b{color:var(--accent)}
+.chain{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.link{border-radius:14px;padding:14px 8px;text-align:center;display:flex;flex-direction:column;gap:4px;border:1px solid var(--line);min-width:0}
+.lname{font-size:16px;font-weight:700;line-height:1.25}
+.lstat{font-size:14px;color:var(--muted);line-height:1.3}
+.link.ok{background:rgba(253,241,214,.08)}
+.link.mid{background:rgba(253,241,214,.04)}
+.link.hit{border-color:var(--accent);background:var(--accent-soft)}
+.link.hit .lstat{color:var(--accent);font-weight:700}
+.link{justify-content:center}
+.link:not(.hit){color:var(--muted);background:rgba(253,241,214,.04)}
+.free{align-self:flex-start;background:var(--accent-soft);color:var(--accent);border:1px solid rgba(242,169,59,.4);border-radius:999px;padding:4px 14px;font-size:14px;font-weight:700}
+.gets{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.gets li{display:flex;gap:10px;align-items:flex-start;line-height:1.45}
+.gets li::before{content:"✓";color:var(--accent);font-weight:700;flex:none}
+.track.big{height:14px}
+.mfill.done{background:var(--accent)}
+.cta{border-color:rgba(242,169,59,.45);background:linear-gradient(180deg,rgba(242,169,59,.10),rgba(242,169,59,.03))}
+form{display:flex;flex-direction:column;gap:12px}
+label{font-size:15px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+input{font:inherit;font-size:18px;padding:13px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(15,31,38,.6);color:var(--fg)}
+input:focus{outline:none;border-color:var(--accent)}
+.err{color:var(--danger);font-size:14px;min-height:1em}
+.note{font-size:13px;color:var(--faint);text-align:center}
+.screen{display:flex;flex-direction:column;gap:24px}
+@media (prefers-reduced-motion:no-preference){.screen{animation:in .35s ease}@keyframes in{from{opacity:.3;transform:translateY(8px)}to{opacity:1;transform:none}}}
+</style>
+
+
+</head>
+<body>
+<div class="wrap">
+  <div class="top" id="top" hidden>
+    <div class="meta"><span id="count">שאלה 1 מתוך 6</span><button class="back" id="back" type="button">→ חזרה</button></div>
+    <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="bar"><div class="fill" id="fill"></div></div>
+  </div>
+  <main id="app"></main>
+</div>
+
+<script>
+const Q=[
+ {stage:true,q:"מה הכי מעסיק אתכם בעסק בימים האלה?",a:[
+  ["start","אני רוצה שיכירו אותי מעבר למעגל הקרוב"],
+  ["stuck","יש עבודה, אבל אני רוצה שהלקוחות יגיעו ממני ולא רק מהמלצות"],
+  ["launch","יש לי משהו ספציפי שאני רוצה למכור עכשיו"]]},
+ {q:"כשאתם מעלים סרטון, מה בדרך כלל קורה?",a:[
+  ["before","מגיבים, אבל לא האנשים שבאמת יקנו ממני"],
+  ["content","מעט צפיות, נראה שגוללים הלאה"],
+  ["after","דווקא עובד לא רע, אבל זה לא מתרגם ללקוחות חדשים"]]},
+ {q:"מה הכי מתסכל אתכם בשיווק כרגע?",a:[
+  ["before","לא ברור לי אם התוכן מגיע לאנשים הנכונים"],
+  ["content","כל פעם מחדש קשה לי להחליט מה להעלות"],
+  ["after","התוכן לוקח ממני הרבה, ולא מביא לקוחות"]]},
+ {q:"מי שפונה אליכם בדרך כלל...",a:[
+  ["before","לא תמיד מתאים, או לא מבין מה אני עושה"],
+  ["content","מגיע מהמלצה, כמעט אף פעם לא מהרשתות"],
+  ["after","מתעניין, שואל כמה זה עולה ונעלם"]]},
+ {q:"איזה משפט הכי מתאר את התוכן שלכם היום?",a:[
+  ["before","הוא מדבר בעיקר עליי ועל השירות, פחות על הלקוח"],
+  ["content","הוא די דומה למה שכולם בתחום שלי מעלים"],
+  ["after","הוא בסדר סך הכול, הלוואי שהוא יביא יותר לקוחות"]]},
+ {q:"מישהו ראה סרטון שלכם ואהב אותו. מה הכי סביר שקורה אחר כך?",a:[
+  ["before","לא ברור לי אם הוא בכלל צריך את מה שיש לי להציע"],
+  ["content","הוא גולל הלאה, ובעוד יום כבר לא זוכר אותי"],
+  ["after","הוא לא באמת יודע מה הצעד הבא"]]}
+];
+const STAGE_LINE={
+ start:"כשאתם מסבירים מה אתם עושים פנים מול פנים, אתם רואים את האסימון נופל. ברשתות, זה עוד לא קורה באותה עוצמה.",
+ stuck:"הלקוחות שלכם מרוצים, והם מנוע מצוין ללקוחות מפה לאוזן. אבל אתם כבר מבינים שהיציבות שאתם מחפשים לא תגיע משם.",
+ launch:"בניתם משהו שהתבשל אצלכם בראש הרבה זמן. אתם יודעים שהוא מצוין, אבל מפחיד לשרוף את הג'וקר הזה."};
+const UNIVERSAL="יש ימים שיש לכם המון מה להגיד, ויש ימים שאתם עומדים מול המצלמה ולא יודעים מאיפה להתחיל.";
+const LINKS={
+ before:{what:"איזה תוכן העסק שלכם צריך נכון לעכשיו? למי אתם מדברים? מה הסיטואציה שהוא נמצא בה? ולמה שיבחר דווקא בכם?",
+  check:"אם אתם מדברים בעיקר על עצמכם, ולא בטוחים מה הבעיה שאתם פותרים ולמי, החוליה הזאת עוד לא מדויקת."},
+ content:{what:"איך אתם פוגשים את אותו אדם מכיוונים שונים, עד שהוא מוכן ורוצה אתכם לצידו.",
+  check:"אם אתם מעלים תוכן רנדומלי, בלי קו ברור ובלי מטרה, החוליה הזאת מבקשת שדרוג."},
+ after:{what:"לאן נכון שהתוכן יוביל? מה המהלך שנכון לשיווק שלכם לעשות עכשיו?",
+  check:"אם אתם מייצרים תוכן רק כי אתם יודעים שצריך, זה לא מספיק, וכדאי לחזק את החוליה הזאת."}};
+const L={before:"לפני התוכן",content:"התוכן",after:"אחרי התוכן"};
+let i=0, ans=[];
+const app=document.getElementById('app'),topBar=document.getElementById('top'),wrap=document.querySelector('.wrap');
+
+function intro(){
+ topBar.hidden=true;
+ wrap.className='wrap mid';
+ app.innerHTML=`<section class="screen center">
+  <h1>בדיקת מצב שיווקי</h1>
+  <p class="sub hl">גלו תוך דקה אחת איפה השיווק שלכם תקוע</p>
+  <button class="btn" id="go" type="button">בואו נתחיל</button></section>`;
+ document.getElementById('go').onclick=()=>{i=0;ans=[];render()};
+}
+function render(){
+ topBar.hidden=false;
+ wrap.className='wrap mid';
+ const q=Q[i];
+ document.getElementById('count').textContent=`שאלה ${i+1} מתוך ${Q.length}`;
+ const p=Math.round(i/Q.length*100);
+ document.getElementById('fill').style.width=p+'%';
+ document.getElementById('bar').setAttribute('aria-valuenow',p);
+ document.getElementById('back').disabled=false;
+ app.innerHTML=`<section class="screen center"><h2>${q.q}</h2><div class="opts">${q.a.map((o,k)=>
+  `<button class="opt${ans[i]===o[0]?' on':''}" data-v="${o[0]}" type="button" id="o${i}-${k}">${o[1]}</button>`).join('')}</div></section>`;
+ app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
+  ans[i]=b.dataset.v; b.classList.add('on');
+  setTimeout(()=>{ i++; i<Q.length?render():result(); },220);
+ });
+ app.querySelector('.opt').focus({preventScroll:true});
+}
+document.getElementById('back').onclick=()=>{ if(i===0){intro();return} i--; render(); };
+
+const FOCUS_LINE={
+ start:"נשמע ממה שסיפרתם שמאוד חשוב לכם שיכירו אתכם מעבר למעגל הקרוב, ושיבינו מה אתם עושים.",
+ stuck:"נשמע ממה שסיפרתם שמאוד חשוב לכם שהלקוחות יגיעו מהשיווק שלכם, ולא רק מהמלצות.",
+ launch:"נשמע ממה שסיפרתם שמאוד חשוב לכם שהדבר החדש שבניתם יגיע לאנשים הנכונים."};
+const COMMON="וכמו הרבה בעלי עסקים שאכפת להם, לפעמים המחשבה על איך זה ייראה, ועל מה יחשבו, תוקעת יותר מהעשייה עצמה.";
+const REC={
+ before:{rec:"נשמע שצריך לחזק את כל מה שקורה לפני התוכן.",
+  why:"כל מה שקורה לפני התוכן הוא הבסיס ששתי השכבות האחרות נשענות עליו. אם הוא לא מספיק חזק, ככה ייראו גם התוכן וגם מה שקורה אחריו.",
+  qs:["באיזו סיטואציה (לא תיאור) הקהל שלנו נמצא, ומה הפתרון שלנו לזה?","האם השיווק הנוכחי נכון למצב הנוכחי של העסק?"]},
+ content:{rec:"נשמע שצריך לחזק את התוכן עצמו.",
+  why:"תוכן לא נועד למכור, אלא לשמש כגשר בין השכבה של לפני התוכן לשכבה של אחרי התוכן. כשהגשר הזה לא מספיק יציב, גם שתי השכבות האחרות קורסות.",
+  qs:["מה הדבר האחד שאנחנו רוצים מהקהל שלנו החודש?","איך אפשר לומר את אותו דבר, רק מכיוון נוסף או בדרך אחרת?"]},
+ after:{rec:"נשמע שצריך לחזק את מה שקורה אחרי התוכן.",
+  why:"גם אם השכבה של לפני התוכן מדויקת, וגם השכבה של התוכן, זה לא ישנה כלום אם הכול נגמר שם. אחרי התוכן זה המקום שבו נמדדת ההצלחה השיווקית.",
+  qs:["מה הצעד האחד שאנחנו רוצים שמי שצפה יעשה עכשיו?","מה מחכה לו כשהוא עושה את הצעד הזה, והאם זה מה שהעסק שלנו צריך כרגע?"]}};
+function result(){
+ wrap.className='wrap';
+ document.getElementById('fill').style.width='100%';
+ document.getElementById('count').textContent='התוצאה שלכם';
+ document.getElementById('back').disabled=true;
+ const K=["before","content","after"], c={before:0,content:0,after:0};
+ ans.slice(1).forEach(v=>c[v]++);
+ const max=Math.max(...K.map(k=>c[k]));
+ const tied=K.filter(k=>c[k]===max);
+ const win=tied.length>1&&tied.includes(ans[2])?ans[2]:tied[0];
+ window.RES={win,c};
+ const flow=K.map(k=>`<div class="node${k===win?' hit':''}"><b>${L[k]}</b><p>${LINKS[k].what}</p></div>`).join('<div class="arrow" aria-hidden="true"></div>');
+ app.innerHTML=`<section class="screen">
+  <span class="eyebrow">התוצאה שלכם</span>
+  <h1>שלוש השכבות של השיווק</h1>
+  <div class="flow">${flow}</div>
+  <div class="card"><h2>המצב שלכם</h2>
+   <p>${FOCUS_LINE[ans[0]]} ${COMMON}</p>
+   <p>השאלון זיהה שהחלק שהכי צריך חיזוק כרגע הוא <b class="hl">${L[win]}</b>.</p>
+   <div class="rec"><span class="tag">ההמלצה</span><p><b>${REC[win].rec}</b></p>
+    <span class="tag">למה זה חשוב</span><p>${REC[win].why}</p>
+    <span class="tag">שתי שאלות שיעזרו לכם כבר עכשיו</span><ol class="qs">${REC[win].qs.map(q=>`<li>${q}</li>`).join('')}</ol></div>
+   <p class="disclaimer">הבדיקה מבוססת על שש שאלות בלבד ונותנת כיוון, לא אבחנה סופית.</p></div>
+  <div class="book" id="cta">
+   <h2>קבעו שיחה בגובה עיניים <span class="hl">ללא עלות</span></h2>
+   <p>שיחה שבה נבין איפה השיווק שלכם תקוע, ומה הכי נכון לעסק שלכם בנקודת הזמן הזאת.</p>
+   <div class="gets-wrap"><span class="tag">תצאו ממנה עם:</span>
+   <ul class="gets"><li>איפה השיווק שלכם עומד היום</li><li>הצעדים הראשונים שכבר כדאי לעשות</li></ul></div>
+   <p class="mantra">אין שיווק נכון.<br><span class="hl">יש שיווק שנכון לכם עכשיו.</span></p>
+   <div id="formbox" class="formbox"><button class="btn" id="book" type="button">לקביעת שיחה</button></div></div></section>`;
+ document.getElementById('book').onclick=form;
+ window.scrollTo({top:0});
+}
+const LEAD_ENDPOINT="https://formsubmit.co/ajax/tomkim07@gmail.com";
+function form(){
+ const box=document.getElementById('formbox');
+ box.innerHTML=`<form id="f" novalidate>
+  <label for="nm">שם<input id="nm" autocomplete="name"></label>
+  <label for="ph">טלפון<input id="ph" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" style="text-align:right"></label>
+  <div class="err" id="er" role="alert"></div><button class="btn" id="sb" type="submit">קביעת שיחה</button></form>`;
+ const f=document.getElementById('f'),er=document.getElementById('er'),sb=document.getElementById('sb');
+ f.oninput=()=>er.textContent='';
+ f.onsubmit=async e=>{e.preventDefault();
+  const n=document.getElementById('nm').value.trim(),raw=document.getElementById('ph').value.trim(),p=raw.replace(/\D/g,'');
+  if(!n){er.textContent='כתבו שם, כדי שנדע איך לפנות אליכם';return}
+  if(p.length<9){er.textContent='מספר הטלפון קצר מדי, בדקו אותו שוב';return}
+  const payload={_subject:`ליד חדש מבדיקת מצב שיווקי: ${n}`,_template:"table",_captcha:"false",
+   "שם":n,"טלפון":raw,"השכבה שהכי צריכה חיזוק":L[RES.win],
+   "פיזור התשובות":`לפני התוכן ${RES.c.before} · התוכן ${RES.c.content} · אחרי התוכן ${RES.c.after}`};
+  Q.forEach((q,k)=>{const a=q.a.find(o=>o[0]===ans[k]);payload[`${k+1}. ${q.q}`]=a?a[1]:''});
+  sb.disabled=true; sb.textContent='שולחים...';
+  try{
+   const r=await fetch(LEAD_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(payload)});
+   if(!r.ok) throw new Error(r.status);
+   try{sessionStorage.setItem('fb_name',n)}catch(_){}
+   try{window.fbq&&fbq('track','Lead')}catch(_){}
+   try{window.dataLayer&&dataLayer.push({event:'quiz_lead',weak_layer:RES.win})}catch(_){}
+   location.href='/thanks';
+  }catch(err){
+   sb.disabled=false; sb.textContent='קביעת שיחה';
+   er.textContent='משהו השתבש בשליחה. נסו שוב בעוד רגע.';
+  }};
+ setTimeout(()=>document.getElementById('nm').focus(),50);
+}
+intro();
+</script>
+
+</body>
+</html>
