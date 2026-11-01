@@ -14,7 +14,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script src="https://t.contentsquare.net/uxa/e8aaf4c6b58b7.js" defer></script>
 <!-- End Contentsquare -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>עסק עם פנים – מערכת תוכן שמביאה לקוחות</title>
+<title>FaceBrand – שיווק שהופך ידע וניסיון ללקוחות</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&family=Rubik:wght@600;700;800;900&display=swap');
 @font-face{
@@ -98,11 +98,21 @@ header{
 /* type */
 h1{
   font-family:'Discovery','Rubik',sans-serif;
-  font-size:clamp(29px,6.8vw,42px);
-  line-height:1.3;font-weight:700;letter-spacing:-.01em;
+  font-size:clamp(20px,5vw,29px);
+  line-height:1.5;font-weight:700;letter-spacing:-.01em;
+  text-align:center;
 }
+.hb{display:block}
+.nbw{white-space:nowrap}
+.hb-s{white-space:nowrap}
+.h1sub{
+  margin-top:14px;text-align:center;color:var(--cream-dim);
+  font-size:clamp(15.5px,3.9vw,19px);line-height:1.8;
+}
+.h1sub .hb{display:block}
 @media(max-width:767px){
   h1 .h1-a{display:block;font-size:8.4vw;line-height:1.3;white-space:nowrap}
+  h1{font-size:5vw;line-height:1.75}
   h1 .h1-b{display:block;font-size:6.85vw;line-height:1.45;white-space:nowrap}
 }
 h2{
@@ -212,6 +222,34 @@ html.a11y-noanim .hero:after,html.a11y-noanim .hero-dust span{animation:none !im
 .card:hover{transform:translateY(-2px);border-color:rgba(246,178,61,.25)}
 .card b{color:var(--cream);display:block;margin-bottom:5px;font-size:19px;font-weight:700}
 
+/* three steps */
+.steps3{margin-top:26px}
+.step3{
+  position:relative;overflow:hidden;
+  background:linear-gradient(180deg,var(--card-hi),var(--card));
+  border:1px solid var(--line);border-radius:var(--radius);padding:26px;
+  transition:transform .45s cubic-bezier(.22,.6,.2,1), border-color .45s ease;
+}
+.step3:hover{transform:translateY(-2px);border-color:rgba(246,178,61,.3)}
+.s3-ghost{
+  position:absolute;top:-26px;inset-inline-end:8px;
+  font-family:'Discovery','Rubik',sans-serif;font-size:130px;line-height:1;font-weight:800;
+  color:rgba(246,178,61,.07);pointer-events:none;user-select:none;
+}
+.s3-head{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+.s3-ic{
+  width:46px;height:46px;flex-shrink:0;color:var(--gold);
+  background:var(--gold-soft);border-radius:13px;
+  display:flex;align-items:center;justify-content:center;
+}
+.s3-ic svg{width:24px;height:24px}
+.step3 h3{font-family:'Discovery','Rubik',sans-serif;font-size:21.5px;font-weight:700;color:var(--gold)}
+.step3 p{color:var(--cream-dim);font-size:17px;line-height:1.75;position:relative}
+.s3-link{
+  width:2px;height:26px;margin:6px auto;border-radius:2px;
+  background:linear-gradient(180deg,rgba(246,178,61,.55),rgba(246,178,61,.08));
+}
+
 /* enemy */
 .enemy{background:var(--bg2)}
 .enemy .big{
@@ -311,6 +349,20 @@ html.a11y-noanim .sys-pen{display:none}
 .fit strong{color:var(--gold)}
 
 /* price */
+.plans{display:grid;gap:14px;margin-top:22px}
+.plan{position:relative;background:linear-gradient(180deg,var(--card-hi),var(--card));border:1px solid var(--line);border-radius:var(--radius);padding:24px 26px}
+.plan h3{font-size:28px;font-weight:800;margin-bottom:4px;color:var(--gold)}
+.plan-kicker{color:var(--muted);font-size:12px;letter-spacing:.04em;margin-bottom:6px}
+.plan-list{list-style:none;margin:10px 0 16px;padding:0}
+.plan-list li{position:relative;padding-inline-start:20px;margin:7px 0;color:var(--cream-dim);font-size:16.5px;line-height:1.55}
+.plan-list li:before{content:'';position:absolute;inset-inline-start:0;top:.5em;width:7px;height:7px;border-radius:50%;background:var(--gold);opacity:.75}
+.plan-price{color:var(--gold);font-weight:800;font-size:22px;margin-bottom:10px}
+.plan-price small{color:var(--muted);font-weight:400;font-size:14px}
+.plan p{color:var(--cream-dim);font-size:16.5px;line-height:1.75}
+.plan-hot{border-color:rgba(246,178,61,.5);box-shadow:0 10px 36px rgba(246,178,61,.1)}
+.plan-tag{position:absolute;top:-12px;inset-inline-start:22px;background:var(--gold);color:#12140f;font-weight:800;font-size:13px;border-radius:999px;padding:3px 14px}
+.extras{margin-top:20px;color:var(--muted);font-size:15px;line-height:1.9}
+.extras-title{color:var(--gold);font-weight:800;font-size:15px;letter-spacing:1px;margin-bottom:2px}
 .price-box{
   background:linear-gradient(180deg,var(--card-hi),var(--card));
   border:1px solid rgba(246,178,61,.25);border-radius:22px;padding:32px 28px;
@@ -638,9 +690,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a onclick="goTo('works')">ככה זה נראה אצל אחרים</a>
     <a onclick="goTo('proofs')">לקוחות מתלוננים</a>
     <a onclick="goTo('method')">למה זה עובד</a>
-    <a onclick="goTo('roadmap')">מה אתם מקבלים</a>
-    <a onclick="goTo('bonuses')">בונוסים</a>
-    <a onclick="goTo('cta')">המחיר</a>
+            <a onclick="goTo('cta')">המחיר</a>
     <a onclick="goTo('story')">מי אני</a>
     <a onclick="goTo('faq')">שאלות ותשובות</a>
     <a onclick="goTo('leadform')">השארת פרטים</a>
@@ -651,10 +701,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="hero" id="top">
   <div class="hero-dust" aria-hidden="true"><span style="left:33.1%;animation-duration:18.1s;animation-delay:-10.5s;--dx:-34px;width:4px;height:4px"></span><span style="left:11.0%;animation-duration:24.2s;animation-delay:-2.7s;--dx:-23px;width:2px;height:2px"></span><span style="left:43.6%;animation-duration:17.0s;animation-delay:-27.3s;--dx:-6px;width:4px;height:4px"></span><span style="left:13.9%;animation-duration:19.1s;animation-delay:-11.2s;--dx:36px;width:4px;height:4px"></span><span style="left:58.2%;animation-duration:16.7s;animation-delay:-23.4s;--dx:5px;width:2px;height:2px"></span><span style="left:29.8%;animation-duration:18.0s;animation-delay:-26.5s;--dx:-15px;width:2px;height:2px"></span><span style="left:11.9%;animation-duration:24.0s;animation-delay:-24.4s;--dx:-32px;width:2px;height:2px"></span><span style="left:56.2%;animation-duration:24.7s;animation-delay:-15.1s;--dx:3px;width:3px;height:3px"></span><span style="left:46.7%;animation-duration:28.9s;animation-delay:-19.2s;--dx:-20px;width:2px;height:2px"></span><span style="left:69.1%;animation-duration:19.4s;animation-delay:-12.8s;--dx:2px;width:3px;height:3px"></span><span style="left:72.0%;animation-duration:20.0s;animation-delay:-0.6s;--dx:-31px;width:3px;height:3px"></span><span style="left:17.8%;animation-duration:20.8s;animation-delay:-2.0s;--dx:-6px;width:2px;height:2px"></span><span style="left:75.4%;animation-duration:24.0s;animation-delay:-3.7s;--dx:-15px;width:3px;height:3px"></span><span style="left:59.1%;animation-duration:24.1s;animation-delay:-16.3s;--dx:27px;width:3px;height:3px"></span><span style="left:47.5%;animation-duration:25.3s;animation-delay:-28.2s;--dx:16px;width:4px;height:4px"></span><span style="left:97.3%;animation-duration:27.5s;animation-delay:-21.5s;--dx:-9px;width:3px;height:3px"></span><span style="left:4.2%;animation-duration:22.5s;animation-delay:-25.0s;--dx:-31px;width:2px;height:2px"></span><span style="left:22.9%;animation-duration:20.0s;animation-delay:-7.8s;--dx:-8px;width:3px;height:3px"></span></div>
   <div class="wrap">
-    <h1 class="rv"><span class="h1-a">אתם כבר <span class="grad">מקצועיים מספיק.</span></span> <span class="h1-b">הגיע הזמן <span class="grad">לתרגם את זה ללקוחות.</span></span></h1>
+    <h1 class="rv"><span class="hb">אתם כבר <span class="grad">מקצועיים מספיק,</span></span><span class="hb">הגיע הזמן <span class="grad">לתרגם את זה ללקוחות.</span></span></h1>
+    <p class="h1sub rv"><span class="hb"><span class="nbw">בניתם עסק,</span> <span class="nbw">העליתם תוכן כדי למצוא לקוחות,</span> <span class="nbw">זה לא עבד</span></span><span class="hb hb-s">ומאז אתם מחפשים מה אתם עושים לא נכון?</span></p>
+    <p class="wholine rv"><span class="wl-block">בדיוק בשביל זה נוצר <span style="color:var(--gold)">FaceBrand</span>. <span style="color:var(--cream)">כדי שתוכן יפסיק להיות בזבוז זמן ויתחיל לעבוד.</span></span></p>
+
     <div class="hline rv" aria-hidden="true"><svg class="hl-svg" preserveAspectRatio="none"><line class="hl-base"/><line class="hl-trail"/><circle class="hl-pen" r="4.5"/></svg></div>
-    
-    <p class="wholine rv"><span class="wl-block">ידע וניסיון? יש לכם.<br>לקוחות מרוצים? גם.<br>הטלפון הראשון של החברים שיש להם בעיה בתחום? אין שאלה.</span><span class="wl-block" style="color:var(--gold)">אז איך יכול להיות שהתוכן שלכם עדיין לא מביא לכם לקוחות?</span><span class="wl-block">בדיוק בשביל זה נוצר "עסק עם פנים".</span></p>
 
     <ul class="checks">
       <li class="rv"><span class="tick"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.5l3.5 3.5 7-8"/></svg></span><span><b>בלי שהשיווק</b> יהפוך לעבודה שנייה</span></li>
@@ -680,18 +731,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li class="rv"><span class="arr">←</span><span>אתם אומרים לעצמכם שתתחילו לשווק מחר. <b>כל יום</b>.</span></li>
       <li class="rv"><span class="arr">←</span><span><b>אתם לא צריכים עוד מידע.</b> אתם צריכים מישהו שיסתכל על התמונה מבחוץ, ויסדר את הכל ביחד.</span></li>
     </ul>
-  </div>
-</section>
-
-<!-- summary cards -->
-<section id="summary">
-  <div class="wrap">
-    <div class="cards">
-      <div class="card rv"><b>תשתית שהופכת תוכן ללקוחות</b>קהל מוגדר, הצעה חזקה, והמבנה שמחבר ביניהם</div>
-      <div class="card rv"><b>תוכן שמניע את התשתית</b>סרטונים שעובדים כגשר בין הקהל להצעה שלכם</div>
-      <div class="card rv"><b>כל סרטון נבנה לפי מטרה שיווקית</b>סמכות, מעורבות, חיבור אישי או מכירה</div>
-      <div class="card rv"><b>בלי התחייבות</b>עוצרים אחרי כל חודש</div>
-    </div>
   </div>
 </section>
 
@@ -762,27 +801,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- enemy -->
 <section class="enemy" id="method">
   <div class="wrap">
-    <div class="eyebrow rv">לימדו אתכם רק חלק מהתמונה</div>
-    <h2 class="rv">למה הדרך של "עסק עם פנים" עובדת בזמן ששל אחרים לא</h2>
+    <h2 class="rv">תוכן מדויק <span class="grad">בשלושה צעדים פשוטים</span></h2>
 
-    <p class="rest rv">רוב יוצרי התוכן מלמדים שהתפקיד של תוכן הוא למכור. אבל זו פיקציה, שנועדה להבטיח להם עבודה.</p>
-    <p class="rest rv">תוכן עובד כמו גשר. הוא מחבר בין קהל מסוים להצעה שרלוונטית אליו. כשההצעה מדויקת לקהל, והתוכן יודע לפגוש אותו ולהוביל אותו אליה, נוצרת התשתית שמאפשרת לתוכן להפוך ללקוחות.</p>
-
-    <div class="system rv" id="sysDiagram">
-      <div class="node n1">קהל<small>האנשים הנכונים</small></div>
-      <div class="link l1"></div>
-      <div class="node n2">תוכן<small>מגשר בין הקהל להצעה</small></div>
-      <div class="link l2"></div>
-      <div class="node n3">הצעה<small>מה שבאמת מוכר</small></div>
-      <svg class="sys-overlay" aria-hidden="true"><path class="sys-trail t1"/><path class="sys-trail t2a"/><path class="sys-trail t2b"/><path class="sys-trail t3"/><circle class="sys-pen p1" r="4.5"/><circle class="sys-pen p2" r="4.5"/></svg>
+    <div class="steps3">
+      <div class="step3 rv">
+        <span class="s3-ghost" aria-hidden="true">1</span>
+        <div class="s3-head">
+          <span class="s3-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7.5"/><circle cx="12" cy="12" r="3"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3"/></svg></span>
+          <h3>לפני התוכן</h3>
+        </div>
+        <p>איזה תוכן העסק שלכם צריך נכון לעכשיו? למי אתם מדברים? מה הסיטואציה שהוא נמצא בה? ולמה שיבחר דווקא בכם?</p>
+      </div>
+      <div class="s3-link rv" aria-hidden="true"></div>
+      <div class="step3 rv">
+        <span class="s3-ghost" aria-hidden="true">2</span>
+        <div class="s3-head">
+          <span class="s3-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3.5"/><path d="M10.2 9.1l5 2.9-5 2.9z"/></svg></span>
+          <h3>תוכן</h3>
+        </div>
+        <p>איך אתם פוגשים את אותו אדם מכיוונים שונים, עד שהוא מוכן ורוצה אתכם לצידו.</p>
+      </div>
+      <div class="s3-link rv" aria-hidden="true"></div>
+      <div class="step3 rv">
+        <span class="s3-ghost" aria-hidden="true">3</span>
+        <div class="s3-head">
+          <span class="s3-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V4"/><path d="M6 4.5h11.5l-3 4 3 4H6"/></svg></span>
+          <h3>ואחרי התוכן</h3>
+        </div>
+        <p>לאן נכון שהתוכן יוביל? מה המהלך שנכון לשיווק שלכם לעשות עכשיו?</p>
+      </div>
     </div>
-
-    <p class="rest rv" style="margin-bottom:4px"><strong>"עסק עם פנים"</strong></p>
-    <ul class="plist" style="margin-top:0">
-      <li class="rv"><span class="arr">←</span><span>מוודא שהקהל נכון</span></li>
-      <li class="rv"><span class="arr">←</span><span>שההצעה נכונה לאותו קהל</span></li>
-      <li class="rv"><span class="arr">←</span><span>ויוצר תוכן שעובד כגשר בין שניהם</span></li>
-    </ul>
   </div>
 </section>
 
@@ -793,58 +841,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- roadmap -->
-<section id="roadmap">
-  <div class="wrap">
-    <h2 class="rv">הנה בדיוק מה שאתם מקבלים</h2>
-
-    <div class="stages" id="stagesWrap">
-    <div class="stage rv">
-      <div class="num">שלב 1</div>
-      <svg viewBox="0 0 48 48" class="stage-ic" fill="none" stroke="#f6b23d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 10h32v22H26l-9 8v-8H8z"/><path d="M24 15v8M24 27h.01" opacity=".9"/></svg>
-      <h3>פגישת עומק</h3>
-      <p>פגישה שבה מבינים אתכם ואת מה שאתם עושים, מקבלים הדרכה וגישה לאפליקציה שתדע ליצור מהידע והניסיון שלכם מאות סוגי תכנים, ויוצרים דרך ברורה שמתחילה בקהל שלכם ומסתיימת בהצעה שלכם.</p>
-    </div>
-
-    <div class="stage rv">
-      <div class="num">שלב 2</div>
-      <svg viewBox="0 0 48 48" class="stage-ic" fill="none" stroke="#f6b23d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="14" width="26" height="20" rx="4"/><path d="M32 20l10-5v18l-10-5z"/></svg>
-      <h3>יום הצילום</h3>
-      <p>יום הצילום הוא הביצוע של התכנון השיווקי: כל סרטון שמצלמים כבר יודע למי הוא מדבר, מה המטרה שלו ולאן הוא מוביל. אתם רק מגיעים ומדברים על הדבר שאתם הכי טובים בו, מדייקים אתכם עד שהמסר עובר. מפה, העבודה השחורה נגמרה.</p>
-    </div>
-
-    <div class="stage rv">
-      <div class="num">שלב 3</div>
-      <svg viewBox="0 0 48 48" class="stage-ic" fill="none" stroke="#f6b23d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="4" width="20" height="40" rx="4"/><path d="M22 32l8-6-8-6z"/><path d="M21 40h6" opacity=".7"/></svg>
-      <h3>הסרטונים אצלכם</h3>
-      <p>עד 5 ימים, וההודעה קופצת: הסרטונים מוכנים. ערוכים, מחכים רק להעלאה. ומהרגע הזה יש לכם תשתית שלמה שרצה ותוכן שמניע אותה: קהל שאתם מדברים אליו, מטרה שעומדת מאחורי כל סרטון, הצעה שבאמת יודעת למכור.</p>
-    </div>
-    <div class="stage rv">
-      <div class="num">שלב 4</div>
-      <svg viewBox="0 0 48 48" class="stage-ic" fill="none" stroke="#f6b23d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="16"/><path d="M24 14v10l7 5"/></svg>
-      <h3>המערכת לומדת</h3>
-      <p>מפה מעדכנים ומשפצים את מערכת התוכן שלכם לפי התוצאות בשטח: מה שעובד מקבל יותר, ומה שפחות, מדייקים. המערכת נבנית לצד העסק ולומדת אותו ככל שהמציאות משתנה, ואני שם לאורך כל הדרך.</p>
-    </div>
-    <svg class="tr-overlay" aria-hidden="true"><path class="tr-trail"/><circle class="tr-pen" r="4.5"/></svg>
-    </div>
-  </div>
-  <div class="wrap rv" style="margin-top:12px">
-    <a class="btn" href="#leadform">אני רוצה מערכת תוכן לעסק שלי ←</a>
-  </div>
-</section>
 
 
-<!-- bonuses -->
-<section id="bonuses">
-  <div class="wrap">
-    <h2 class="rv">ובנוסף, כלול בפנים</h2>
-    <div class="bonus">
-      <div class="card rv"><b>ערכת הצעה</b>תבנית לדף נחיתה שמוכר, נוסחה להצעה חזקה, ואוסף רעיונות להצעות קטנות<i>שווי 400 ₪ · כלול</i></div>
-      <div class="card rv"><b>אסטרטגיות תוכן לפי המצב העסקי</b>אוסף אסטרטגיות שמותאם למצב שהעסק שלכם נמצא בו עכשיו<i>שווי 250 ₪ · כלול</i></div>
-      <div class="card rv"><b>כספת ההוקים</b>ספריית פתיחים לסרטונים, מקוטלגת לפי זוויות לתוכן<i>שווי 200 ₪ · כלול</i></div>
-    </div>
-  </div>
-</section>
+
+
 
 <!-- fit -->
 <section class="fit">
@@ -857,20 +857,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- price -->
 <section id="cta">
   <div class="wrap">
-    <h2 class="rv">הכל, במחיר אחד</h2>
-    <div class="price-box rv">
-      <div class="row"><span>יום צילום, מבוצע לפי התכנון השיווקי</span><span>2,500 ₪</span></div>
-      <div class="row"><span>עריכה של 8 סרטונים, מוכנים להעלאה</span><span>1,000 ₪</span></div>
-      <div class="row"><span>אפליקציה + הדרכת 1:1</span><span>400 ₪</span></div>
-      <div class="row"><span>חיזוק ההצעה: המדריך + פידבק אישי</span><span>400 ₪</span></div>
-      <div class="row"><span>ליווי שיווקי שוטף ומענה יומי</span><span>300 ₪</span></div>
-      <div class="row"><span>אסטרטגיות תוכן לפי מצב עסקי</span><span>250 ₪</span></div>
-      <div class="row" style="border-bottom:none"><span>כספת ההוקים</span><span>200 ₪</span></div>
-      <div class="total"><span>שווי כולל</span><span>5,050 ₪</span></div>
-      <div class="final"><span>המחיר</span><span>3,000 ₪ + מע"מ</span></div>
-      <p class="price-notes">בלי עלות הקמה. הפגישה, האפליקציה והעבודה על ההצעה, הכל בתוך החודש הראשון.<br>פחות ממה שעולה חודש של ניהול סושיאל. רק ששם משלמים על תפעול, ופה על המנגנון: קהל, הצעה, תוכן.</p>
-      <a class="btn" href="#leadform">אני רוצה עוד לקוחות ←</a>
+    <h2 class="rv">מה מתאים לעסק שלכם <span class="grad">עכשיו?</span></h2>
+
+    <div class="plans">
+      <div class="plan rv">
+        <p class="plan-kicker">למי שאוהב ליצור בעצמו</p>
+        <h3>ליווי אסטרטגי</h3>
+        <ul class="plan-list">
+          <li>פגישת תכנון</li>
+          <li>מערכת שהופכת ידע מקצועי ואישי לרעיונות לתוכן</li>
+          <li>אסטרטגיות שמותאמות למצב העסקי הנוכחי</li>
+          <li>זמינות מלאה</li>
+        </ul>
+        <div class="plan-price">1,500 ₪ <small>+ מע"מ</small></div>
+      </div>
+      <div class="plan plan-hot rv">
+        <p class="plan-kicker">למי שאוהב שיוצרים בשבילו</p>
+        <h3>ליווי מלא</h3>
+        <ul class="plan-list">
+          <li>כל מה שבליווי האסטרטגי</li>
+          <li>יום צילום</li>
+          <li>בימוי</li>
+          <li>עריכה</li>
+        </ul>
+        <div class="plan-price">3,500 ₪ <small>+ מע"מ</small></div>
+      </div>
     </div>
+
+    <a class="btn rv" href="#leadform">אני רוצה עוד לקוחות ←</a>
   </div>
 </section>
 
@@ -926,7 +940,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </details>
     <details class="rv">
       <summary>תוך כמה זמן אני אראה לקוחות?</summary>
-      <p>לא אבטיח לכם תאריך, ומי שמבטיח, כדאי לבדוק אותו. מה שכן אפשר להבטיח: תוך חודש יש לכם מערכת שלמה באוויר, קהל, הצעה וסרטונים.</p>
+      <p>לא אבטיח לכם תאריך, ומי שמבטיח, כדאי לבדוק אותו. מה שכן אפשר להבטיח: במסלול המלא, תוך חודש יש לכם את כל שלושת החלקים באוויר, קהל, הצעה וסרטונים.</p>
     </details>
     <details class="rv">
       <summary>ומה אם ארצה להפסיק?</summary>
@@ -1085,13 +1099,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <video id="vidPlayer" controls playsinline></video>
 </div>
 
-<!-- sticky mobile cta -->
-<div class="sticky-cta" id="stickyCta">
-  <div class="sticky-inner">
-    <p class="sticky-note">מערכת תוכן שלמה תוך חודש אחד - מפסיקים מתי שרוצים</p>
-    <a class="btn-quiet" href="#leadform">הצטרפו לעסק עם פנים</a>
-  </div>
-</div>
+
 
 <script>
 const IS_MOBILE = window.matchMedia && matchMedia('(max-width: 767px)').matches;
@@ -1110,13 +1118,7 @@ const io = new IntersectionObserver((entries)=>{
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
 // bottom bar: show as soon as scrolling starts, stay visible
-const sticky = document.getElementById('stickyCta');
-const stickyOnScroll = () => {
-  if (window.scrollY > 60) { sticky.classList.add('show'); }
-  else { sticky.classList.remove('show'); }
-};
-window.addEventListener('scroll', stickyOnScroll, {passive:true});
-stickyOnScroll();
+
 
 // carousel tiles: play while visible
 const reelVids = document.querySelectorAll('.reel-track video');
@@ -1338,7 +1340,7 @@ function makeTracer(wrapEl, itemSel, opts){
     setTimeout(()=>{ build(); run(); }, 750); } },{threshold:.25});
   io.observe(wrapEl);
 }
-if(!IS_MOBILE){ makeTracer(document.getElementById('stagesWrap'), '.stage', {mode:'rail', speed:.32, hold:2200}); } else { document.getElementById('stagesWrap').classList.add('classic'); }
+
 
 // headline underline: desktop = ball draws it once and it stays; mobile = ball loops on a plain line
 (function(){
