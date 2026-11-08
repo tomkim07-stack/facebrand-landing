@@ -370,6 +370,43 @@ html.a11y-noanim .sys-pen{display:none}
 .plan p{color:var(--cream-dim);font-size:16.5px;line-height:1.75}
 .plan-hot{border-color:rgba(246,178,61,.5);box-shadow:0 10px 36px rgba(246,178,61,.1)}
 .plan-tag{position:absolute;top:-12px;inset-inline-start:22px;background:var(--gold);color:#12140f;font-weight:800;font-size:13px;border-radius:999px;padding:3px 14px}
+/* flexible pricing calculator */
+.calc-base{margin-top:4px}
+.calc-q{margin:24px 0 8px;text-align:center;font-family:'Discovery','Rubik',sans-serif;font-weight:700;font-size:19px;color:var(--cream)}
+.calc-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.calc-opt{
+  display:flex;flex-direction:column;gap:4px;align-items:center;justify-content:center;
+  background:linear-gradient(180deg,var(--card-hi),var(--card));
+  border:1px solid var(--line);border-radius:14px;padding:14px 10px;
+  color:var(--cream-dim);cursor:pointer;font-family:inherit;font-size:15.5px;
+  transition:border-color .25s ease, transform .2s ease, background .25s ease;
+  text-align:center;
+}
+.calc-opt:hover{transform:translateY(-1px)}
+.calc-opt .co-name{font-weight:700}
+.calc-opt .co-price{color:var(--muted);font-size:13.5px}
+.calc-opt.on{border-color:rgba(246,178,61,.65);background:linear-gradient(180deg,rgba(246,178,61,.12),var(--card));color:var(--cream)}
+.calc-opt.on .co-price{color:var(--gold)}
+.co-tick{
+  width:24px;height:24px;border-radius:50%;
+  border:1.5px solid rgba(242,233,216,.32);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);font-size:16px;line-height:1;margin-bottom:3px;
+  transition:background .25s ease,border-color .25s ease,color .25s ease;
+}
+.co-tick:before{content:'+'}
+.calc-opt.on .co-tick{background:var(--gold);border-color:var(--gold);color:#12140f;font-weight:800}
+.calc-opt.on .co-tick:before{content:'\2713'}
+.calc-opt.on{box-shadow:0 8px 26px rgba(246,178,61,.16)}
+.calc-hint{text-align:center;color:var(--muted);font-size:14px;margin:-4px 0 12px}
+.calc-total{
+  margin:18px 0 24px;text-align:center;font-size:18px;color:var(--cream-dim);
+  background:linear-gradient(180deg,var(--card-hi),var(--card));
+  border:1px solid rgba(246,178,61,.4);border-radius:14px;padding:16px;
+  box-shadow:0 10px 36px rgba(246,178,61,.08);
+}
+.calc-total b{color:var(--gold);font-size:26px;font-family:'Discovery','Rubik',sans-serif;margin:0 6px}
+.calc-total small{color:var(--muted)}
 .extras{margin-top:20px;color:var(--muted);font-size:15px;line-height:1.9}
 .extras-title{color:var(--gold);font-weight:800;font-size:15px;letter-spacing:1px;margin-bottom:2px}
 .price-box{
@@ -872,32 +909,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- price -->
 <section id="cta">
   <div class="wrap">
-    <h2 class="rv">מה מתאים לעסק שלכם <span class="grad">עכשיו?</span></h2>
+    <h2 class="rv">מודל תמחור <span class="grad">גמיש</span></h2>
+    <p class="rest rv">אין שני חודשים זהים בעסק, אז למה לשלם ריטיינר קבוע? פה משלמים לפי צורך: הליווי תמיד בפנים, וכל חודש מוסיפים רק את מה שהוא באמת צריך.</p>
 
-    <div class="plans">
-      <div class="plan rv">
-        <p class="plan-kicker">למי שאוהב ליצור בעצמו</p>
-        <h3>ליווי אסטרטגי</h3>
-        <ul class="plan-list">
-          <li>פגישת תכנון</li>
-          <li>מערכת שהופכת ידע מקצועי ואישי לרעיונות לתוכן</li>
-          <li>אסטרטגיות שמותאמות למצב העסקי הנוכחי</li>
-          <li>זמינות מלאה</li>
-        </ul>
-        <div class="plan-price">1,500 ₪ <small>+ מע"מ</small></div>
-      </div>
-      <div class="plan plan-hot rv">
-        <p class="plan-kicker">למי שאוהב שיוצרים בשבילו</p>
-        <h3>ליווי מלא</h3>
-        <ul class="plan-list">
-          <li>כל מה שבליווי האסטרטגי</li>
-          <li>יום צילום</li>
-          <li>בימוי</li>
-          <li>עריכה</li>
-        </ul>
-        <div class="plan-price">3,500 ₪ <small>+ מע"מ</small></div>
-      </div>
+    <div class="plan calc-base rv">
+      <p class="plan-kicker">הבסיס, תמיד בפנים</p>
+      <h3>ליווי אסטרטגי</h3>
+      <ul class="plan-list">
+        <li>פגישת תכנון</li>
+        <li>מערכת שהופכת ידע מקצועי ואישי לרעיונות לתוכן</li>
+        <li>אסטרטגיות שמותאמות למצב העסקי הנוכחי</li>
+        <li>זמינות מלאה</li>
+      </ul>
+      <div class="plan-price">1,500 ₪ <small>לחודש + מע"מ</small></div>
     </div>
+
+    <p class="calc-q rv">מה החודש הזה צריך?</p>
+    <p class="calc-hint rv">לחצו על התוספות, והמחיר מתעדכן למטה</p>
+    <div class="calc-opts rv">
+      <button type="button" class="calc-opt" data-add="2000" aria-pressed="false"><span class="co-tick" aria-hidden="true"></span><span class="co-name">יום צילום · סרטוני דיבור</span><span class="co-price">+ 2,000 ₪</span></button>
+      <button type="button" class="calc-opt" data-add="500" aria-pressed="false"><span class="co-tick" aria-hidden="true"></span><span class="co-name">יום צילום · בירולים</span><span class="co-price">+ 500 ₪</span></button>
+      <button type="button" class="calc-opt" data-add="250" aria-pressed="false"><span class="co-tick" aria-hidden="true"></span><span class="co-name">גרפיקה לקמפיין</span><span class="co-price">+ 250 ₪</span></button>
+      <button type="button" class="calc-opt" data-add="2000" aria-pressed="false"><span class="co-tick" aria-hidden="true"></span><span class="co-name">סרטון ארוך</span><span class="co-price">+ 2,000 ₪</span></button>
+    </div>
+
+    <div class="calc-total rv"><span>החודש שלכם:</span> <b id="calcSum">1,500 ₪</b> <small>+ מע"מ</small></div>
 
     <a class="btn rv" href="#leadform">אני רוצה עוד לקוחות ←</a>
   </div>
@@ -1499,5 +1535,27 @@ function a11yReset(){
 
 </script>
 
+<script>
+(function(){
+  var sum=document.getElementById('calcSum'); if(!sum) return;
+  var base=1500;
+  var opts=Array.prototype.slice.call(document.querySelectorAll('.calc-opt'));
+  function upd(){
+    var t=base;
+    opts.forEach(function(o){ if(o.classList.contains('on')) t+=parseInt(o.getAttribute('data-add'),10); });
+    sum.textContent=t.toLocaleString('en-US')+' \u20aa';
+    if(sum.animate && !document.documentElement.classList.contains('a11y-noanim')){
+      sum.animate([{transform:'scale(1.14)'},{transform:'scale(1)'}],{duration:220,easing:'ease-out'});
+    }
+  }
+  opts.forEach(function(o){
+    o.addEventListener('click',function(){
+      o.classList.toggle('on');
+      o.setAttribute('aria-pressed', o.classList.contains('on') ? 'true' : 'false');
+      upd();
+    });
+  });
+})();
+</script>
 </body>
 </html>
