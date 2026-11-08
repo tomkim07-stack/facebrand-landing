@@ -371,7 +371,19 @@ html.a11y-noanim .sys-pen{display:none}
 .plan-hot{border-color:rgba(246,178,61,.5);box-shadow:0 10px 36px rgba(246,178,61,.1)}
 .plan-tag{position:absolute;top:-12px;inset-inline-start:22px;background:var(--gold);color:#12140f;font-weight:800;font-size:13px;border-radius:999px;padding:3px 14px}
 /* flexible pricing calculator */
-.calc-base{margin-top:4px}
+.calc-base{
+  margin-top:4px;position:relative;
+  border-color:rgba(246,178,61,.55);
+  box-shadow:0 8px 30px rgba(246,178,61,.1);
+}
+.calc-base-tick{
+  position:absolute;top:18px;inset-inline-end:20px;
+  width:24px;height:24px;border-radius:50%;
+  background:var(--gold);color:#12140f;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:15px;
+}
+.calc-base-tick:before{content:'\2713'}
 .calc-q{margin:24px 0 8px;text-align:center;font-family:'Discovery','Rubik',sans-serif;font-weight:700;font-size:19px;color:var(--cream)}
 .calc-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .calc-opt{
@@ -412,21 +424,18 @@ html.a11y-noanim .sys-pen{display:none}
   #cta h2{font-size:24px}
   #cta h2{margin-bottom:10px}
   #cta .rest{font-size:14.5px;line-height:1.6}
-  .calc-base{padding:14px 16px 13px;position:relative}
-  .calc-base h3{font-size:19px;margin-bottom:0}
-  .calc-base .plan-price{position:absolute;top:13px;inset-inline-end:16px;margin:0;font-size:19px}
-  .calc-base .plan-price small{display:block;font-size:10.5px;text-align:end;margin-top:-2px}
-  .calc-base .plan-list{margin:8px 0 0}
-  .calc-base .plan-list li{display:inline;padding:0;margin:0;font-size:13px;color:var(--muted);line-height:1.7}
-  .calc-base .plan-list li:before{display:none}
-  .calc-base .plan-list li:not(:last-child):after{content:' · ';color:var(--gold)}
-  .calc-q{margin:14px 0 9px;font-size:16.5px}
-  .calc-opts{grid-template-columns:1fr;gap:8px}
-  .calc-opt{flex-direction:row;align-items:center;gap:11px;padding:11px 14px;text-align:start}
-  .calc-opt .co-name{flex:1;font-size:14.5px}
-  .calc-opt .co-price{font-size:13px}
-  .co-tick{width:21px;height:21px;font-size:14px;margin-bottom:0;flex-shrink:0}
-  .calc-total{margin:11px 0 13px;padding:12px;font-size:15.5px}
+  .calc-base{padding:14px 16px}
+  .calc-base h3{font-size:21px;margin-bottom:2px}
+  .calc-base .plan-list{margin:8px 0 10px}
+  .calc-base .plan-list li{font-size:13.8px;margin:4px 0;line-height:1.5;padding-inline-start:15px}
+  .calc-base .plan-list li:before{width:6px;height:6px;top:.45em}
+  .calc-base-tick{top:13px;inset-inline-end:14px;width:21px;height:21px;font-size:13px}
+  .calc-q{margin:12px 0 9px;font-size:16.5px}
+  .calc-opts{gap:8px}
+  .calc-opt{padding:9px 8px;font-size:14px}
+  .co-tick{width:19px;height:19px;font-size:13px;margin-bottom:0}
+  .calc-opt .co-price{font-size:12.5px}
+  .calc-total{margin:10px 0 12px;padding:11px;font-size:15.5px}
   .calc-total b{font-size:22px}
 }
 .extras{margin-top:20px;color:var(--muted);font-size:15px;line-height:1.9}
@@ -931,10 +940,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- price -->
 <section id="cta">
   <div class="wrap">
-    <h2 class="rv">מודל תמחור <span class="grad">גמיש</span></h2>
-    <p class="rest rv">אין שני חודשים זהים בעסק, אז פה משלמים לפי צורך: הליווי תמיד בפנים, והחודש קובע את השאר.</p>
+    <h2 class="rv">המחיר? <span class="grad">לפי הצרכים שלכם.</span></h2>
+    <p class="rest rv">עסק עולה, יורד, משנה כיוון. ריטיינר שלא זז איתו פשוט לא מכיר אתכם.</p>
 
     <div class="plan calc-base rv">
+      <span class="calc-base-tick" aria-hidden="true"></span>
       <h3>ליווי אסטרטגי</h3>
       <ul class="plan-list">
         <li>פגישת תכנון</li>
@@ -942,7 +952,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li>אסטרטגיות שמותאמות למצב העסקי הנוכחי</li>
         <li>זמינות מלאה</li>
       </ul>
-      <div class="plan-price">1,500 ₪ <small>לחודש + מע"מ</small></div>
     </div>
 
     <p class="calc-q rv">מה החודש הזה צריך?</p>
