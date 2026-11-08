@@ -115,23 +115,6 @@ h1{
   .hero{padding:48px 0 60px}
   .checks{margin:24px 0 28px}
   .checks li{padding:8px 0;font-size:4.5vw}
-  #cta{padding:38px 0 30px}
-  #cta h2{font-size:24px}
-  #cta h2{margin-bottom:10px}
-  #cta .rest{font-size:14.5px;line-height:1.6}
-  .calc-base{padding:14px 16px}
-  .calc-base h3{font-size:21px;margin-bottom:2px}
-  .calc-base .plan-list{margin:8px 0 10px}
-  .calc-base .plan-list li{font-size:13.8px;margin:4px 0;line-height:1.5;padding-inline-start:15px}
-  .calc-base .plan-list li:before{width:6px;height:6px;top:.45em}
-  .calc-base .plan-price{font-size:19px;margin-bottom:0}
-  .calc-q{margin:12px 0 9px;font-size:16.5px}
-  .calc-opts{gap:8px}
-  .calc-opt{padding:9px 8px;font-size:14px}
-  .co-tick{width:19px;height:19px;font-size:13px;margin-bottom:0}
-  .calc-opt .co-price{font-size:12.5px}
-  .calc-total{margin:10px 0 12px;padding:11px;font-size:15.5px}
-  .calc-total b{font-size:22px}
 }
 h2{
   font-family:'Discovery','Rubik',sans-serif;
@@ -424,6 +407,28 @@ html.a11y-noanim .sys-pen{display:none}
 }
 .calc-total b{color:var(--gold);font-size:26px;font-family:'Discovery','Rubik',sans-serif;margin:0 6px}
 .calc-total small{color:var(--muted)}
+@media(max-width:767px){
+  #cta{padding:38px 0 30px}
+  #cta h2{font-size:24px}
+  #cta h2{margin-bottom:10px}
+  #cta .rest{font-size:14.5px;line-height:1.6}
+  .calc-base{padding:14px 16px 13px;position:relative}
+  .calc-base h3{font-size:19px;margin-bottom:0}
+  .calc-base .plan-price{position:absolute;top:13px;inset-inline-end:16px;margin:0;font-size:19px}
+  .calc-base .plan-price small{display:block;font-size:10.5px;text-align:end;margin-top:-2px}
+  .calc-base .plan-list{margin:8px 0 0}
+  .calc-base .plan-list li{display:inline;padding:0;margin:0;font-size:13px;color:var(--muted);line-height:1.7}
+  .calc-base .plan-list li:before{display:none}
+  .calc-base .plan-list li:not(:last-child):after{content:' · ';color:var(--gold)}
+  .calc-q{margin:14px 0 9px;font-size:16.5px}
+  .calc-opts{grid-template-columns:1fr;gap:8px}
+  .calc-opt{flex-direction:row;align-items:center;gap:11px;padding:11px 14px;text-align:start}
+  .calc-opt .co-name{flex:1;font-size:14.5px}
+  .calc-opt .co-price{font-size:13px}
+  .co-tick{width:21px;height:21px;font-size:14px;margin-bottom:0;flex-shrink:0}
+  .calc-total{margin:11px 0 13px;padding:12px;font-size:15.5px}
+  .calc-total b{font-size:22px}
+}
 .extras{margin-top:20px;color:var(--muted);font-size:15px;line-height:1.9}
 .extras-title{color:var(--gold);font-weight:800;font-size:15px;letter-spacing:1px;margin-bottom:2px}
 .price-box{
