@@ -1506,7 +1506,10 @@ function submitLead(e){
     body: JSON.stringify(data)
   }).then(r=>r.json()).then(j=>{
     if(!j || String(j.success) !== 'true') throw new Error(j && j.message || 'fail');
-    document.getElementById('leadForm').innerHTML = '<p style="color:var(--cream);font-size:19px;text-align:center;padding:10px 0">הפרטים התקבלו. אחזור אליכם בהקדם, תום.</p>';
+    try{sessionStorage.setItem('fb_name', data.name)}catch(_){}
+    try{window.fbq&&fbq('track','Lead')}catch(_){}
+    try{window.dataLayer&&dataLayer.push({event:'form_lead'})}catch(_){}
+    location.href='/thanks';
   }).catch(()=>{
     btn.disabled = false;
     btn.textContent = 'אני רוצה את הצעד הבא ←';
